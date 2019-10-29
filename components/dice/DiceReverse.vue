@@ -1,24 +1,17 @@
 <template>
   <div
     class="dice-reverse"
-    @click="invertReverse"
-  >
-    <i class="fa fa-exchange" />
-  </div>
+    @click="reverse"
+  />
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-
 export default {
   name: 'DiceReverse',
   methods: {
-    invertReverse () {
-      this.INVERT_REVERSE()
-    },
-    ...mapMutations({
-      INVERT_REVERSE: 'dice/INVERT_REVERSE'
-    })
+    reverse () {
+      this.$emit('reverse')
+    }
   }
 }
 </script>
@@ -30,6 +23,7 @@ export default {
     border: 5px solid #291a43;
     border-radius: 100%;
     background: url('~assets/change.png') no-repeat #3e3156;
+    background-position: 1px 1px;
 }
 .dice-reverse:hover {
   cursor: pointer;

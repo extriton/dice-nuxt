@@ -31,20 +31,24 @@
         />
       </ul>
     </div>
-    <div class="dice-reverse-wrapper">
-      <DiceReverse />
-    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
-import DiceReverse from '~/components/dice/DiceReverse.vue'
-
 export default {
   name: 'DiceSlider',
   components: {
-    DiceReverse
+    // DiceReverse
+  },
+  props: {
+    userValue: {
+      type: Number,
+      required: true
+    },
+    reversed: {
+      typr: Boolean,
+      required: true
+    }
   },
   data () {
     return {
@@ -56,15 +60,11 @@ export default {
     // Возвращает значение отображаемое внутри триггера если он перетягивается мышкой
     runnerValue () {
       if (this.drag) {
-        return this.USER_VALUE
+        return this.userValue
       } else {
         return ''
       }
-    },
-    ...mapGetters({
-      USER_VALUE: 'dice/USER_VALUE',
-      REVERSE: 'dice/REVERSE'
-    })
+    }
   },
   methods: {
     // Позиционирует числа заголовка captionItems[] в заивсимости от значения
@@ -81,14 +81,14 @@ export default {
         backgroundColor: '#50CC00'
       }
 
-      if ((value < this.USER_VALUE + 1 && this.REVERSE) || (value > this.USER_VALUE + 1 && !this.REVERSE)) {
+      if ((value < this.userValue + 1 && this.reversed) || (value > this.userValue + 1 && !this.reversed)) {
         style.backgroundColor = 'red'
       }
 
-      const dx = Math.abs(value - this.USER_VALUE - 1)
+      const dx = Math.abs(value - this.userValue - 1)
       if (dx <= 4) {
         const y = Math.sqrt(25 - dx * dx)
-        style.top = `calc(${y * 27}% - 16px)`
+        style.top = `calc(${(y - 1) * 32}% - 14px)`
       }
 
       return style
@@ -96,7 +96,7 @@ export default {
     // Позиционирует триггер
     setRunnerStyle () {
       const style = {
-        left: this.USER_VALUE + '%'
+        left: this.userValue + '%'
       }
       return style
     },
@@ -108,14 +108,14 @@ export default {
     stopDrag () {
       this.drag = false
     },
-    // Перетягивания триггера мышкой
+    // Перетягивание триггера мышкой
     doDrag (e) {
       if (this.drag) {
         let newValue
         newValue = parseInt((e.offsetX + e.target.offsetLeft - e.target.offsetWidth / 2) / e.target.parentNode.offsetWidth * 10000) / 100
         if (newValue < 0) { newValue = 0 }
         if (newValue > 100) { newValue = 100 }
-        this.SET_USER_VALUE(newValue)
+        this.changeUserValue(newValue)
       }
     },
     // Перемещение триггера при клике по линейке
@@ -128,23 +128,24 @@ export default {
         newValue = parseInt(e.offsetX / e.target.offsetWidth * 10000) / 100
       }
 
-      const deltaValue = (newValue - this.USER_VALUE) / 20
+      const deltaValue = (newValue - this.userValue) / 20
       const intervalId = setInterval(() => {
-        if (this.USER_VALUE === newValue) {
+        if (this.userValue === newValue) {
           clearInterval(intervalId)
           return
         }
-        if ((deltaValue > 0 && this.USER_VALUE + deltaValue > newValue) ||
-          (deltaValue < 0 && this.USER_VALUE + deltaValue < newValue)) {
-          this.SET_USER_VALUE(newValue)
+        if ((deltaValue > 0 && this.userValue + deltaValue > newValue) ||
+          (deltaValue < 0 && this.userValue + deltaValue < newValue)) {
+          this.changeUserValue(newValue)
         } else {
-          this.SET_USER_VALUE(this.USER_VALUE + deltaValue)
+          this.changeUserValue(this.userValue + deltaValue)
         }
       }, 10)
     },
-    ...mapMutations({
-      SET_USER_VALUE: 'dice/SET_USER_VALUE'
-    })
+    // Эмит события родителю на изменение userValue
+    changeUserValue (value) {
+      this.$emit('changeUserValue', value)
+    }
   }
 }
 </script>
@@ -233,14 +234,5 @@ export default {
   background-color: #FFEF00;
   cursor: pointer;
   background-image: none;
-}
-
-.dice-slider .dice-reverse-wrapper {
-  width: 29px;
-  height: 29px;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 50%);
 }
 </style>
