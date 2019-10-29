@@ -1,5 +1,9 @@
 <template>
-  <DiceGame />
+  <div class="page">
+    <div class="dice-game-wrapper">
+      <DiceGame />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -7,22 +11,22 @@ import DiceGame from '~/components/dice/DiceGame.vue'
 
 export default {
   head: {
-    title: 'Dice (test)',
-    link: [
-      { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' }
-    ]
+    title: 'Dice'
   },
   components: {
     DiceGame
   }
 }
 </script>
-<style lang="scss">
-* {
-  -moz-user-select: none;
-  -webkit-user-select: none;
+<style>
+.page {
+  height: 100vh;
+  background-color: #381960;
+  padding: 100px 50px;
 }
-body {
-  margin: 0;
+
+.dice-game-wrapper {
+  margin: 0 auto;
+  margin-left: calc((100% - 813px) / 2 );
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div
-       class="dice-reverse"
-       @click="invertReverse"
+    class="dice-reverse"
+    @click="invertReverse"
   >
-    <i class="fa fa-exchange"></i>
+    <i class="fa fa-exchange" />
   </div>
 </template>
 
@@ -23,20 +23,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .dice-reverse {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #291944;
+    width: 29px;
+    height: 29px;
+    border: 5px solid #291a43;
     border-radius: 100%;
-    background-color: #3E2F57;
-    color: #AAA;
-    line-height: 40px;
-    font-size: 16px;
-    text-align: center;
-    box-sizing: border-box;
-    &:hover {
-        cursor: pointer;
-    }
+    background: url('~assets/change.png') no-repeat #3e3156;
+}
+.dice-reverse:hover {
+  cursor: pointer;
 }
 </style>

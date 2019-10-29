@@ -17,12 +17,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 .dice-game {
-    width: 100%;
-    height: 100vh;
-    background-color: #291944;
-    padding: 100px 50px 50px 50px;
-    box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 813px;
+  height: 465px;
+  border-radius: 7px;
+  border: solid 1px #000000;
+  background-color: #291a43;
+  padding-top: 20px;
 }
 </style>

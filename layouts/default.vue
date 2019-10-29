@@ -17,11 +17,23 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
+  user-select: none;
+}
+
+ul {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .button--green {
