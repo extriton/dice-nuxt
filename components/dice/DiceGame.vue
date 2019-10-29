@@ -1,5 +1,12 @@
 <template>
   <div class="dice-game">
+    <!-- Score -->
+    <div class="dice-score-wrapper">
+      <DiceScore
+        :score="score"
+        :result-type="resultType"
+      />
+    </div>
     <!-- Slider -->
     <div class="dice-slider-wrapper">
       <DiceSlider
@@ -17,12 +24,14 @@
 </template>
 
 <script>
+import DiceScore from '~/components/dice/DiceScore.vue'
 import DiceSlider from '~/components/dice/DiceSlider.vue'
 import DiceReverse from '~/components/dice/DiceReverse.vue'
 
 export default {
   name: 'DiceGame',
   components: {
+    DiceScore,
     DiceSlider,
     DiceReverse
   },
@@ -31,6 +40,9 @@ export default {
       userValue: 50,
       gameValue: 0,
       reversed: false,
+      score: 350.20,
+      // resultType: 0 - default, 1 - win, 2 - lose
+      resultType: 2,
       history: []
     }
   },
@@ -58,6 +70,10 @@ export default {
   border: solid 1px #000000;
   background-color: #291a43;
   padding-top: 20px;
+}
+
+.dice-score-wrapper {
+  margin-bottom: 50px;
 }
 
 .dice-slider-wrapper {
