@@ -7,7 +7,7 @@ import DiceGame from '~/components/dice/DiceGame.vue'
 
 export default {
   head: {
-    title: 'Dice',
+    title: 'Dice (test)',
     link: [
       { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' }
     ]
