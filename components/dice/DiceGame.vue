@@ -103,7 +103,7 @@ export default {
   width: 743px;
   height: 134px;
   margin: 0 auto 50px auto;
-  border: 1px solid grey;
+  /*border: 1px solid grey; */
 }
 
 .dice-user-value-wrapper {
@@ -118,6 +118,7 @@ export default {
   height: 134px;
   border: 1px solid #555;
   float: right;
+  display: none;
 }
 
 .dice-slider-wrapper {
