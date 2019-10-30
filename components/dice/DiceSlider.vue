@@ -1,5 +1,10 @@
 <template>
-  <div class="dice-slider">
+  <div
+    class="dice-slider"
+    @mousemove="doDrag"
+    @mouseleave="stopDrag"
+    @mouseup.left="stopDrag"
+  >
     <ul class="caption">
       <li
         v-for="item in captionItems"
@@ -15,14 +20,15 @@
         class="runner"
         :class="{ dragged: drag }"
         :style="setRunnerStyle()"
-        @mousedown.left="startDrag"
-        @mousemove="doDrag"
-        @mouseup.left="stopDrag"
-        @mouseleave="stopDrag"
+        @mousedown.left.self="startDrag"
       >
         {{ runnerValue }}
       </div>
-      <ul class="rule" @click.capture="shiftRunner">
+      <ul
+        class="rule"
+        @click.capture="shiftRunner"
+        ref="rule"
+      >
         <li
           v-for="item in 101"
           :key="'n' + item"
@@ -37,9 +43,6 @@
 <script>
 export default {
   name: 'DiceSlider',
-  components: {
-    // DiceReverse
-  },
   props: {
     userValue: {
       type: Number,
@@ -53,7 +56,10 @@ export default {
   data () {
     return {
       captionItems: [0, 25, 50, 75, 100],
-      drag: false
+      drag: false,
+      ruleWidth: 0,
+      startDragX: 0,
+      startDragValue: 0
     }
   },
   computed: {
@@ -101,18 +107,23 @@ export default {
       return style
     },
     // Начало перетягивания триггера мышкой
-    startDrag () {
+    startDrag (e) {
+      this.startDragX = e.clientX
+      this.startDragValue = this.userValue
+      this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
       this.drag = true
     },
     // Завршение перетягивания триггера мышкой
-    stopDrag () {
+    stopDrag (e) {
       this.drag = false
     },
     // Перетягивание триггера мышкой
     doDrag (e) {
       if (this.drag) {
-        let newValue
-        newValue = parseInt((e.offsetX + e.target.offsetLeft - e.target.offsetWidth / 2) / e.target.parentNode.offsetWidth * 10000) / 100
+        let newValue = this.startDragValue + (e.clientX - this.startDragX) / this.ruleWidth * 100
+        // this.clientX = e.clientX
+        newValue = parseInt(newValue * 100) / 100
+        // newValue = parseInt((e.offsetX + e.target.offsetLeft - e.target.offsetWidth / 2) / e.target.parentNode.offsetWidth * 10000) / 100
         if (newValue < 0) { newValue = 0 }
         if (newValue > 100) { newValue = 100 }
         this.changeUserValue(newValue)
