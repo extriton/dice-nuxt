@@ -91,7 +91,6 @@ export default {
       let dx = 0
       dx = Math.abs(value - this.userValue)
       if (dx <= 4) {
-        // dx = Math.round(dx)
         const y = Math.sqrt(16 - dx * dx)
         let tmp = 0
         tmp = -7 + y * 4
@@ -102,16 +101,7 @@ export default {
         }
         if (tmp < 0) { tmp = 0 }
         style.top = tmp + 'px'
-        // style.top = `calc(${(y - 1) * 32}% - 7px)`
-        // style.top = 10 + parseInt(4 - dx) * 16 - 3 * dx + '%'
       }
-      /*
-      const dx = Math.abs(value - this.userValue)
-      if (dx <= 3.5) {
-        const y = Math.sqrt(25 - dx * dx + 2)
-        style.top = `calc(${(y - 1) * 32}% - 14px)`
-      }
-      */
 
       return style
     },

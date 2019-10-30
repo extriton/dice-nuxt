@@ -1,13 +1,22 @@
 <template>
   <div
     class="dice-reverse"
+    :class="{ clicked: clicked }"
     @click="reverse"
+    @mousedown.left="clicked = true"
+    @mouseup.left="clicked = false"
+    @mouseleave="clicked = false"
   />
 </template>
 
 <script>
 export default {
   name: 'DiceReverse',
+  data () {
+    return {
+      clicked: false
+    }
+  },
   methods: {
     reverse () {
       this.$emit('reverse')
@@ -26,6 +35,11 @@ export default {
   background-position: 3px 3px;
 }
 .dice-reverse:hover {
+  cursor: pointer;
+  background: url('~assets/change_h.png') no-repeat #fff;
+  background-position: 3px 3px;
+}
+.dice-reverse.clicked {
   cursor: pointer;
   background: url('~assets/change_h.png') no-repeat #ffed2a;
   background-position: 3px 3px;
