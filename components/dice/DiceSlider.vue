@@ -82,20 +82,28 @@ export default {
     },
     // Позиционирует деления линейки
     setRuleItemStyle (value) {
-      const style = {
-        left: `calc((100% - 3px) / 100 * ${value})`,
-        backgroundColor: '#50CC00'
-      }
+      const style = {}
 
       if ((value <= this.userValue && this.reversed) || (value >= this.userValue && !this.reversed)) {
         style.backgroundColor = 'red'
       }
 
-      const dx = Math.abs(value - this.userValue)
-      if (dx < 4) {
-        // const y = Math.sqrt(16 - dx * dx)
+      let dx = 0
+      dx = Math.abs(value - this.userValue)
+      if (dx <= 4) {
+        // dx = Math.round(dx)
+        const y = Math.sqrt(16 - dx * dx)
+        let tmp = 0
+        tmp = -7 + y * 4
+        if (dx > 3) {
+          tmp = tmp * 1 - (3 - dx) * 1.5
+        } else {
+          tmp = tmp * 1 + (3 - dx) * 1.5
+        }
+        if (tmp < 0) { tmp = 0 }
+        style.top = tmp + 'px'
         // style.top = `calc(${(y - 1) * 32}% - 7px)`
-        style.top = 8 + parseInt(4 - dx) * 14 + '%'
+        // style.top = 10 + parseInt(4 - dx) * 16 - 3 * dx + '%'
       }
       /*
       const dx = Math.abs(value - this.userValue)
@@ -163,6 +171,9 @@ export default {
     changeUserValue (value) {
       this.$emit('changeUserValue', value)
     }
+  },
+  mounted () {
+    this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
   }
 }
 </script>
@@ -172,7 +183,7 @@ export default {
   height: 80px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.25);
-  padding: 12px 24px 0 24px;;
+  padding: 12px 20px 0 21px;;
   box-sizing: border-box;
   position: relative;
 }
@@ -218,11 +229,18 @@ export default {
 }
 
 .dice-slider .rule-wrapper .rule .rule-item {
-  width: 20px;
-  position: absolute;
+  display: inline-block;
+  position: relative;
+  margin-right: 5px;
   top: 0;
   width: 2px;
   height: 8px;
+  vertical-align: top;
+  background-color: #50CC00;
+}
+
+.dice-slider .rule-wrapper .rule .rule-item:last-child {
+  margin-right: 0;
 }
 
 .dice-slider .rule-wrapper .runner {
