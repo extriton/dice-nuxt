@@ -27,5 +27,7 @@ export default {
 }
 .dice-reverse:hover {
   cursor: pointer;
+  background: url('~assets/change_h.png') no-repeat #ffed2a;
+  background-position: 3px 3px;
 }
 </style>

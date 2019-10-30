@@ -95,7 +95,7 @@ export default {
       if (dx < 4) {
         // const y = Math.sqrt(16 - dx * dx)
         // style.top = `calc(${(y - 1) * 32}% - 7px)`
-        style.top = 8 + parseInt(4 - dx) * 15 + '%'
+        style.top = 8 + parseInt(4 - dx) * 14 + '%'
       }
       /*
       const dx = Math.abs(value - this.userValue)
