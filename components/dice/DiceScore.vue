@@ -103,24 +103,24 @@ export default {
 }
 
 .dice-score .dice-score-value .value {
-    font-weight: bold;
-    color: #fff;
+  font-weight: bold;
+  color: #fff;
 }
 
 .dice-score .left-corner,
 .dice-score .right-corner {
-    display: inline-block;
-    width: 24px;
-    height: 30px;
-    position: absolute;
-    top: 6px;
+  display: inline-block;
+  width: 24px;
+  height: 30px;
+  position: absolute;
+  top: 6px;
 }
 
 .dice-score .left-corner {
-    left: 0;
+  left: 0;
 }
 
 .dice-score .right-corner {
-    right: 0;
+  right: 0;
 }
 </style>

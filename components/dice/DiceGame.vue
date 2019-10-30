@@ -7,6 +7,15 @@
         :result-type="resultType"
       />
     </div>
+    <!-- Result block -->
+    <div class="dice-result-block">
+      <div class="dice-user-value-wrapper">
+        <DiceUserValue
+          :user-value="userValue"
+          :reversed="reversed"
+        />
+      </div>
+    </div>
     <!-- Slider -->
     <div class="dice-slider-wrapper">
       <DiceSlider
@@ -25,6 +34,7 @@
 
 <script>
 import DiceScore from '~/components/dice/DiceScore.vue'
+import DiceUserValue from '~/components/dice/DiceUserValue.vue'
 import DiceSlider from '~/components/dice/DiceSlider.vue'
 import DiceReverse from '~/components/dice/DiceReverse.vue'
 
@@ -32,6 +42,7 @@ export default {
   name: 'DiceGame',
   components: {
     DiceScore,
+    DiceUserValue,
     DiceSlider,
     DiceReverse
   },
@@ -40,7 +51,8 @@ export default {
       userValue: 50,
       gameValue: 0,
       reversed: false,
-      score: 350.20,
+      score: 350.2,
+      result: 0,
       // resultType: 0 - default, 1 - win, 2 - lose
       resultType: 2,
       history: []
@@ -69,14 +81,29 @@ export default {
   border-radius: 7px;
   border: solid 1px #000000;
   background-color: #291a43;
-  padding-top: 20px;
+  padding-top: 18px;
 }
 
 .dice-score-wrapper {
-  margin-bottom: 50px;
+  width: 743px;
+  margin: 0 auto 15px auto;
+}
+
+.dice-result-block {
+  width: 743px;
+  height: 140px;
+  margin: 0 auto 50px auto;
+  /* border: 1px solid grey; */
+}
+
+.dice-user-value-wrapper {
+  display: inline-block;
+  width: 121px;
 }
 
 .dice-slider-wrapper {
+  width: 743px;
+  margin: 0 auto;
   position: relative;
 }
 

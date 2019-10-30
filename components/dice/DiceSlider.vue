@@ -46,7 +46,7 @@ export default {
       required: true
     },
     reversed: {
-      typr: Boolean,
+      type: Boolean,
       required: true
     }
   },
@@ -152,14 +152,12 @@ export default {
 
 <style>
 .dice-slider {
-  width: 743px;
   height: 80px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.25);
   padding: 12px 24px 0 24px;;
   box-sizing: border-box;
   position: relative;
-  margin: 0 auto;
 }
 
 .dice-slider .caption {
