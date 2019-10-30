@@ -33,7 +33,7 @@
           v-for="item in 101"
           :key="'n' + item"
           class="rule-item"
-          :style="setRuleItemStyle(item)"
+          :style="setRuleItemStyle(item - 1)"
         />
       </ul>
     </div>
@@ -83,19 +83,27 @@ export default {
     // Позиционирует деления линейки
     setRuleItemStyle (value) {
       const style = {
-        left: `calc((100% - 3px) / 100 * ${value - 1})`,
+        left: `calc((100% - 3px) / 100 * ${value})`,
         backgroundColor: '#50CC00'
       }
 
-      if ((value < this.userValue + 1 && this.reversed) || (value > this.userValue + 1 && !this.reversed)) {
+      if ((value <= this.userValue && this.reversed) || (value >= this.userValue && !this.reversed)) {
         style.backgroundColor = 'red'
       }
 
-      const dx = Math.abs(value - this.userValue - 1)
-      if (dx <= 4) {
-        const y = Math.sqrt(25 - dx * dx)
+      const dx = Math.abs(value - this.userValue)
+      if (dx < 4) {
+        // const y = Math.sqrt(16 - dx * dx)
+        // style.top = `calc(${(y - 1) * 32}% - 7px)`
+        style.top = 8 + parseInt(4 - dx) * 15 + '%'
+      }
+      /*
+      const dx = Math.abs(value - this.userValue)
+      if (dx <= 3.5) {
+        const y = Math.sqrt(25 - dx * dx + 2)
         style.top = `calc(${(y - 1) * 32}% - 14px)`
       }
+      */
 
       return style
     },
@@ -225,7 +233,7 @@ export default {
   line-height: 28px;
   font-size: 12px;
   border-radius: 100%;
-  color: 291944;
+  color: #291944;
   text-align: center;
   transform: translateX(-50%);
   background: url('~assets/arrows.png') no-repeat #FFF;
