@@ -121,9 +121,7 @@ export default {
     doDrag (e) {
       if (this.drag) {
         let newValue = this.startDragValue + (e.clientX - this.startDragX) / this.ruleWidth * 100
-        // this.clientX = e.clientX
         newValue = parseInt(newValue * 100) / 100
-        // newValue = parseInt((e.offsetX + e.target.offsetLeft - e.target.offsetWidth / 2) / e.target.parentNode.offsetWidth * 10000) / 100
         if (newValue < 0) { newValue = 0 }
         if (newValue > 100) { newValue = 100 }
         this.changeUserValue(newValue)
