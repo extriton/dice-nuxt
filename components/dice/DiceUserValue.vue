@@ -33,7 +33,7 @@ export default {
 
 <style>
 .dice-user-value {
-  margin-top: 67px;
+  margin-top: 53px;
   font-size: 28px;
   font-weight: normal;
   font-stretch: normal;
