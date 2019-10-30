@@ -9,12 +9,20 @@
     </div>
     <!-- Result block -->
     <div class="dice-result-block">
+      <!-- User Value -->
       <div class="dice-user-value-wrapper">
         <DiceUserValue
           :user-value="userValue"
           :reversed="reversed"
         />
       </div>
+      <!-- History -->
+      <div class="dice-history-wrapper">
+        <DiceHistory
+          :history="history"
+        />
+      </div>
+      <div class="clearfix"></div>
     </div>
     <!-- Slider -->
     <div class="dice-slider-wrapper">
@@ -35,6 +43,7 @@
 <script>
 import DiceScore from '~/components/dice/DiceScore.vue'
 import DiceUserValue from '~/components/dice/DiceUserValue.vue'
+import DiceHistory from '~/components/dice/DiceHistory.vue'
 import DiceSlider from '~/components/dice/DiceSlider.vue'
 import DiceReverse from '~/components/dice/DiceReverse.vue'
 
@@ -43,6 +52,7 @@ export default {
   components: {
     DiceScore,
     DiceUserValue,
+    DiceHistory,
     DiceSlider,
     DiceReverse
   },
@@ -55,7 +65,7 @@ export default {
       result: 0,
       // resultType: 0 - default, 1 - win, 2 - lose
       resultType: 2,
-      history: []
+      history: [13.12, -15.4, -6.2, 52.30, 17.12, -5.65]
     }
   },
   methods: {
@@ -97,8 +107,17 @@ export default {
 }
 
 .dice-user-value-wrapper {
-  display: inline-block;
+  display: block;
   width: 121px;
+  float: left;
+}
+
+.dice-history-wrapper {
+  display: block;
+  width: 53px;
+  height: 134px;
+  border: 1px solid #555;
+  float: right;
 }
 
 .dice-slider-wrapper {
@@ -114,5 +133,9 @@ export default {
   left: 50%;
   bottom: 0;
   transform: translate(-50%, 50%);
+}
+
+.clearfix {
+  clear: both;
 }
 </style>
