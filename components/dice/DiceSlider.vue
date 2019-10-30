@@ -60,7 +60,7 @@ export default {
     // Возвращает значение отображаемое внутри триггера если он перетягивается мышкой
     runnerValue () {
       if (this.drag) {
-        return this.userValue
+        return parseInt(this.userValue)
       } else {
         return ''
       }
