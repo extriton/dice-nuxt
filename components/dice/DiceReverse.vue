@@ -18,12 +18,12 @@ export default {
 
 <style>
 .dice-reverse {
-    width: 29px;
-    height: 29px;
-    border: 5px solid #291a43;
-    border-radius: 100%;
-    background: url('~assets/change.png') no-repeat #3e3156;
-    background-position: 1px 1px;
+  width: 34px;
+  height: 34px;
+  border: 5px solid #291a43;
+  border-radius: 100%;
+  background: url('~assets/change.png') no-repeat #3e3156;
+  background-position: 3px 3px;
 }
 .dice-reverse:hover {
   cursor: pointer;

@@ -127,8 +127,8 @@ export default {
 }
 
 .dice-slider-wrapper .dice-reverse-wrapper {
-  width: 29px;
-  height: 29px;
+  width: 34px;
+  height: 34px;
   position: absolute;
   left: 50%;
   bottom: 0;
