@@ -2,7 +2,7 @@
   <div class="dice-score">
     <div class="left-corner">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30">
-        <path :fill="cornerStyle.color" :fill-opacity="cornerStyle.opacity" fill-rule="nonzero" d="M3 0A3 3 0 0 0 .504 4.664L7.394 15 .505 25.336A3 3 0 0 0 3 30h18a3 3 0 0 0 3-3v-1h-.999L23 27a2 2 0 0 1-1.85 1.995L21 29H3a2 2 0 0 1-1.664-3.11l6.89-10.335a1 1 0 0 0 0-1.11L1.337 4.11A2 2 0 0 1 3 1h8V0z" />
+        <path class="svg-corner" :fill="cornerStyle.color" :fill-opacity="cornerStyle.opacity" fill-rule="nonzero" d="M3 0A3 3 0 0 0 .504 4.664L7.394 15 .505 25.336A3 3 0 0 0 3 30h18a3 3 0 0 0 3-3v-1h-.999L23 27a2 2 0 0 1-1.85 1.995L21 29H3a2 2 0 0 1-1.664-3.11l6.89-10.335a1 1 0 0 0 0-1.11L1.337 4.11A2 2 0 0 1 3 1h8V0z" />
       </svg>
     </div>
     <div
@@ -13,7 +13,7 @@
     </div>
     <div class="right-corner">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30">
-        <path :fill="cornerStyle.color" :fill-opacity="cornerStyle.opacity" fill-rule="nonzero" d="M21 0a3 3 0 0 1 2.496 4.664L16.606 15l6.89 10.336A3 3 0 0 1 21 30H3a3 3 0 0 1-3-3v-1h.999L1 27a2 2 0 0 0 1.85 1.995L3 29h18a2 2 0 0 0 1.664-3.11l-6.89-10.335a1 1 0 0 1 0-1.11l6.89-10.336A2 2 0 0 0 21 1h-8V0z" />
+        <path class="svg-corner" :fill="cornerStyle.color" :fill-opacity="cornerStyle.opacity" fill-rule="nonzero" d="M21 0a3 3 0 0 1 2.496 4.664L16.606 15l6.89 10.336A3 3 0 0 1 21 30H3a3 3 0 0 1-3-3v-1h.999L1 27a2 2 0 0 0 1.85 1.995L3 29h18a2 2 0 0 0 1.664-3.11l-6.89-10.335a1 1 0 0 1 0-1.11l6.89-10.336A2 2 0 0 0 21 1h-8V0z" />
       </svg>
     </div>
   </div>
@@ -100,6 +100,11 @@ export default {
   letter-spacing: normal;
   color: #a698af;
   text-align: center;
+  transition: border-color .25s ease-out 1.3s;
+}
+
+.svg-corner {
+  transition: all .25s ease-out 1.3s;
 }
 
 .dice-score .dice-score-value .value {

@@ -61,7 +61,6 @@ export default {
   font-size: 12px;
   line-height: 16px;
   font-weight: normal;
-  transition: opaicty .2s linear;
 }
 
 .dice-history-item.lose {

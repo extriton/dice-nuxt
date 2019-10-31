@@ -106,6 +106,9 @@ export default {
       tmp = this.gameValue / 100
       if ((tmp <= this.userValue && this.reversed) || (tmp >= this.userValue && !this.reversed)) {
         tmp *= -1
+        this.resultType = 2
+      } else {
+        this.resultType = 1
       }
 
       this.history.push(tmp)
