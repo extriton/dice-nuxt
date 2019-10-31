@@ -37,6 +37,12 @@
         />
       </div>
     </div>
+    <!-- Button -->
+    <div class="dice-play-button-wrapper">
+      <DicePlayButton
+        @dicePlay="dicePlay"
+      />
+    </div>
   </div>
 </template>
 
@@ -46,6 +52,7 @@ import DiceUserValue from '~/components/dice/DiceUserValue.vue'
 import DiceHistory from '~/components/dice/DiceHistory.vue'
 import DiceSlider from '~/components/dice/DiceSlider.vue'
 import DiceReverse from '~/components/dice/DiceReverse.vue'
+import DicePlayButton from '~/components/dice/DicePlayButton.vue'
 
 export default {
   name: 'DiceGame',
@@ -54,7 +61,8 @@ export default {
     DiceUserValue,
     DiceHistory,
     DiceSlider,
-    DiceReverse
+    DiceReverse,
+    DicePlayButton
   },
   data () {
     return {
@@ -76,6 +84,14 @@ export default {
     // Устанавливает новое занчение userValue по событию из слайдера
     changeUserValue (value) {
       this.userValue = value
+    },
+    // Начинает розыгрыш
+    dicePlay () {
+      const result = parseInt(this.generateResult()) / 100
+    },
+    // Заглушка генерирующая рандомное число
+    generateResult () {
+      return Math.random() * 10000
     }
   }
 }
@@ -102,8 +118,8 @@ export default {
 .dice-result-block {
   width: 743px;
   height: 134px;
-  margin: 0 auto 50px auto;
-  /*border: 1px solid grey; */
+  margin: 0 auto 45px auto;
+  border: 1px solid grey;
 }
 
 .dice-user-value-wrapper {
@@ -118,13 +134,13 @@ export default {
   height: 134px;
   border: 1px solid #555;
   float: right;
-  display: none;
 }
 
 .dice-slider-wrapper {
   width: 743px;
   margin: 0 auto;
   position: relative;
+  margin: 0 auto 43px auto;
 }
 
 .dice-slider-wrapper .dice-reverse-wrapper {
@@ -135,6 +151,11 @@ export default {
   bottom: 0;
   transform: translate(-50%, 50%);
 }
+/*
+.dice-play-button-wrapper {
+  height: 50px;
+}
+*/
 
 .clearfix {
   clear: both;
