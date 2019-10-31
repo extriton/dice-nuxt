@@ -20,13 +20,14 @@
       <div class="dice-result-wrapper">
         <DiceResult
           :game-value="gameValue"
+          :game-counter="gameCounter"
         />
       </div>
       <!-- History -->
       <div class="dice-history-wrapper">
         <DiceHistory
           :history="history"
-          :new-value="newValue"
+          :game-counter="gameCounter"
         />
       </div>
       <div class="clearfix" />
@@ -37,6 +38,7 @@
         :user-value="userValue"
         :game-value="gameValue"
         :reversed="reversed"
+        :game-counter="gameCounter"
         @changeUserValue="changeUserValue"
       />
       <div class="dice-reverse-wrapper">
@@ -77,13 +79,13 @@ export default {
   data () {
     return {
       userValue: 50,
-      gameValue: -1,
+      gameValue: 0,
       reversed: false,
       score: 350.2,
       // resultType: 0 - default, 1 - win, 2 - lose
       resultType: 0,
       history: [13.12, -15.4, -6.2, 52.30, 17.12, -5.65],
-      newValue: false
+      gameCounter: 0
     }
   },
   methods: {
@@ -107,7 +109,7 @@ export default {
       }
 
       this.history.push(tmp)
-      this.newValue = !this.newValue
+      this.gameCounter++
     },
     // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {

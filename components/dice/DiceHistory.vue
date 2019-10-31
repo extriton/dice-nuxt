@@ -1,7 +1,7 @@
 <template>
   <div class="dice-history">
     <transition name="list">
-      <ul :key="newValue">
+      <ul :key="gameCounter">
         <li
           v-for="item in formatHistory"
           :key="item"
@@ -28,8 +28,8 @@ export default {
       type: Array,
       required: true
     },
-    newValue: {
-      type: Boolean,
+    gameCounter: {
+      type: Number,
       required: true
     }
   },
@@ -52,14 +52,14 @@ export default {
 .dice-history-item {
   display: block;
   height: 22px;
-  padding: 3px 13px;
+  padding: 3px;
   border-radius: 11.5px;
   background-color: rgba(255, 255, 255, 0.1);
   margin-bottom: 10px;
   text-align: center;
   color: #91ff4a;
   font-size: 12px;
-  line-height: 1.33;
+  line-height: 16px;
   font-weight: normal;
   transition: opaicty .2s linear;
 }

@@ -17,7 +17,7 @@
     </ul>
     <transition name="line-fade">
       <div
-        v-if="gameValue >= 0"
+        v-if="gameCounter > 0"
         class="rule-line"
         :style="setLineStyle()"
       />
@@ -61,6 +61,10 @@ export default {
     },
     reversed: {
       type: Boolean,
+      required: true
+    },
+    gameCounter: {
+      type: Number,
       required: true
     }
   },
@@ -222,7 +226,7 @@ export default {
   width: 2px;
   height: 80px;
   background-color: #50CC00;
-  transition: left .2s ease-out 1.3s, background-color .2s ease-out 1.3s;
+  transition: all .2s ease-out 1.3s;
 }
 
 .dice-slider .caption .caption-item {
