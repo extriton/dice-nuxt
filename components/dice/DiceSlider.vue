@@ -1,9 +1,6 @@
 <template>
   <div
     class="dice-slider"
-    @mousemove="doDrag"
-    @mouseleave="stopDrag"
-    @mouseup.left="stopDrag"
   >
     <ul class="caption">
       <li
@@ -23,6 +20,13 @@
       />
     </transition>
     <div class="rule-wrapper">
+      <div
+        v-show="drag"
+        class="runner-pad"
+        @mousemove="doDrag"
+        @mouseleave="stopDrag"
+        @mouseup.left="stopDrag"
+      />
       <div
         class="runner"
         :class="{ dragged: drag }"
@@ -89,7 +93,6 @@ export default {
   },
   mounted () {
     this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
-    // console.log(this.$refs.rule.offsetParent)
   },
   methods: {
     // Позиционирует числа заголовка captionItems[] в заивсимости от значения
@@ -251,6 +254,15 @@ export default {
   position: relative;
   margin-top: 12px;
   z-index: 5;
+}
+
+.dice-slider .rule-wrapper .runner-pad {
+  position: absolute;
+  top: -120px;
+  bottom: -100px;
+  left: -56px;
+  right: -55px;
+  z-index: 10;
 }
 
 .dice-slider .rule-wrapper .rule {
