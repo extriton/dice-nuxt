@@ -34,6 +34,7 @@
     <div class="dice-slider-wrapper">
       <DiceSlider
         :user-value="userValue"
+        :game-value="gameValue"
         :reversed="reversed"
         @changeUserValue="changeUserValue"
       />
@@ -75,7 +76,7 @@ export default {
   data () {
     return {
       userValue: 50,
-      gameValue: 0,
+      gameValue: -1,
       reversed: false,
       score: 350.2,
       // resultType: 0 - default, 1 - win, 2 - lose
@@ -95,7 +96,9 @@ export default {
     // Начинает розыгрыш
     dicePlay () {
       this.gameValue = this.generateResult()
-      // console.log(this.gameValue)
+      // For test: push random value -99.99 .. 99.99 to history array
+      const tmp = (parseInt(Math.random() * 20000) - 9999) / 100
+      this.history.push(tmp)
     },
     // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {
@@ -138,7 +141,6 @@ export default {
 .dice-result-wrapper {
   display: block;
   width: 504px;
-  /* margin-left: 121px; */
   float: left;
 }
 

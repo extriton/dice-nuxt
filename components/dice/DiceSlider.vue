@@ -15,6 +15,13 @@
         {{ item }}
       </li>
     </ul>
+    <transition name="line-fade">
+      <div
+        v-if="gameValue >= 0"
+        class="rule-line"
+        :style="setLineStyle()"
+      />
+    </transition>
     <div class="rule-wrapper">
       <div
         class="runner"
@@ -25,9 +32,9 @@
         {{ runnerValue }}
       </div>
       <ul
+        ref="rule"
         class="rule"
         @click.capture="shiftRunner"
-        ref="rule"
       >
         <li
           v-for="item in 101"
@@ -45,6 +52,10 @@ export default {
   name: 'DiceSlider',
   props: {
     userValue: {
+      type: Number,
+      required: true
+    },
+    gameValue: {
       type: Number,
       required: true
     },
@@ -72,12 +83,34 @@ export default {
       }
     }
   },
+  mounted () {
+    this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
+    // console.log(this.$refs.rule.offsetParent)
+  },
   methods: {
     // Позиционирует числа заголовка captionItems[] в заивсимости от значения
     setCaptionItemStyle (value) {
       const style = {
         left: value + '%'
       }
+      return style
+    },
+    // Позиционирует линию
+    setLineStyle () {
+      const style = {}
+
+      if (this.gameValue >= 0) {
+        style.left = 21 + this.gameValue / 100 * 7 + 'px'
+      } else {
+        style.opacity = 1
+      }
+
+      if ((this.gameValue / 100 <= this.userValue && this.reversed) || (this.gameValue / 100 >= this.userValue && !this.reversed)) {
+        style.backgroundColor = 'red'
+      } else {
+        style.backgroundColor = '#50CC00'
+      }
+
       return style
     },
     // Позиционирует деления линейки
@@ -161,9 +194,6 @@ export default {
     changeUserValue (value) {
       this.$emit('changeUserValue', value)
     }
-  },
-  mounted () {
-    this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
   }
 }
 </script>
@@ -181,6 +211,15 @@ export default {
 .dice-slider .caption {
   position: relative;
   height: 16px;
+}
+
+.dice-slider .rule-line {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 80px;
+  background-color: #50CC00;
+  transition: all .2s ease-out 1.3s;
 }
 
 .dice-slider .caption .caption-item {
@@ -204,6 +243,7 @@ export default {
 .dice-slider .rule-wrapper {
   position: relative;
   margin-top: 12px;
+  z-index: 5;
 }
 
 .dice-slider .rule-wrapper .rule {
@@ -258,4 +298,12 @@ export default {
   cursor: pointer;
   background-image: none;
 }
+
+/* Transition styles */
+.line-fade-enter-active, .fade-leave-active {
+  transition: opacity .2s ease-out 1.3s;
+}
+.line-fade-enter { opacity: 0; }
+.line-fade-enter-to { opacity: 1; }
+
 </style>

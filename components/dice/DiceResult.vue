@@ -1,6 +1,6 @@
 <template>
   <div class="dice-result">
-    {{ gameValue / 100 }}
+    {{ result }}
   </div>
 </template>
 
@@ -11,6 +11,23 @@ export default {
     gameValue: {
       type: Number,
       required: true
+    }
+  },
+  computed: {
+    result () {
+      const zeros = '0000'
+      let res
+      if (this.gameValue < 0) {
+        res = (parseInt(Math.random() * 10000)).toString()
+      } else {
+        res = this.gameValue.toString()
+      }
+
+      if (res.length < 4) {
+        res = zeros.substr(0, 4 - res.length) + res
+      }
+
+      return res
     }
   }
 }
