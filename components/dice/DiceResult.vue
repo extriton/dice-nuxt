@@ -1,6 +1,27 @@
 <template>
   <div class="dice-result">
-    {{ result }}
+    <div class="dice-result-item">
+      <div class="dice-result-item-value">
+        {{ result.charAt(0) }}
+      </div>
+    </div>
+    <div class="dice-result-item">
+      <div class="dice-result-item-value">
+        {{ result.charAt(1) }}
+      </div>
+    </div>
+    <div class="dice-result-item">
+      <div class="dice-result-item-value">
+        {{ result.charAt(2) }}
+      </div>
+    </div>
+    <div class="dice-result-item">
+      <div class="dice-result-item-value">
+        {{ result.charAt(3) }}
+      </div>
+    </div>
+    <div class="clearfix" />
+    <div class="dice-result-dot" />
   </div>
 </template>
 
@@ -40,8 +61,43 @@ export default {
 <style>
 .dice-result {
   width: 504px;
-  height: 133px;
-  padding: 20px;
-  background-color: #aaa;
+  height: 134px;
+  position: relative;
 }
+
+.dice-result-item {
+  width: 117px;
+  height: 134px;
+  margin-right: 12px;
+  background: url('~assets/honeycomb.png') no-repeat transparent;
+  float: left;
+}
+
+.dice-result-item:nth-child(4) {
+  margin-right: 0;
+}
+
+.dice-result-item-value {
+  width: 35px;
+  height: 66px;
+  font-size: 65px;
+  color: #fff;
+  margin: 33px 0 0 42px;
+  line-height: 1;
+}
+
+.dice-result-dot {
+  width: 14px;
+  height: 17px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: url('~assets/dot_yellow.png') no-repeat transparent;
+}
+
+.clearfix {
+  clear: both;
+}
+
 </style>
