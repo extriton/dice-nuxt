@@ -162,7 +162,7 @@ export default {
         let newValue = this.startDragValue + (e.clientX - this.startDragX) / this.ruleWidth * 100
         newValue = parseInt(newValue * 100) / 100
         if (newValue < 0) { newValue = 0 }
-        if (newValue > 100) { newValue = 100 }
+        if (newValue > 99.99) { newValue = 99.99 }
         this.changeUserValue(newValue)
       }
     },
@@ -175,6 +175,9 @@ export default {
       } else {
         newValue = parseInt(e.offsetX / e.target.offsetWidth * 10000) / 100
       }
+
+      if (newValue < 0) { newValue = 0 }
+      if (newValue > 99.99) { newValue = 99.99 }
 
       const deltaValue = (newValue - this.userValue) / 20
       const intervalId = setInterval(() => {
