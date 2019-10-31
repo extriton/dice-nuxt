@@ -16,13 +16,19 @@
           :reversed="reversed"
         />
       </div>
+      <!-- Game result -->
+      <div class="dice-result-wrapper">
+        <DiceResult
+          :game-value="gameValue"
+        />
+      </div>
       <!-- History -->
       <div class="dice-history-wrapper">
         <DiceHistory
           :history="history"
         />
       </div>
-      <div class="clearfix"></div>
+      <div class="clearfix" />
     </div>
     <!-- Slider -->
     <div class="dice-slider-wrapper">
@@ -49,6 +55,7 @@
 <script>
 import DiceScore from '~/components/dice/DiceScore.vue'
 import DiceUserValue from '~/components/dice/DiceUserValue.vue'
+import DiceResult from '~/components/dice/DiceResult.vue'
 import DiceHistory from '~/components/dice/DiceHistory.vue'
 import DiceSlider from '~/components/dice/DiceSlider.vue'
 import DiceReverse from '~/components/dice/DiceReverse.vue'
@@ -59,6 +66,7 @@ export default {
   components: {
     DiceScore,
     DiceUserValue,
+    DiceResult,
     DiceHistory,
     DiceSlider,
     DiceReverse,
@@ -70,9 +78,8 @@ export default {
       gameValue: 0,
       reversed: false,
       score: 350.2,
-      result: 0,
       // resultType: 0 - default, 1 - win, 2 - lose
-      resultType: 2,
+      resultType: 0,
       history: [13.12, -15.4, -6.2, 52.30, 17.12, -5.65]
     }
   },
@@ -87,11 +94,12 @@ export default {
     },
     // Начинает розыгрыш
     dicePlay () {
-      console.log(this.generateResult())
+      this.gameValue = this.generateResult()
+      // console.log(this.gameValue)
     },
-    // Заглушка генерирующая рандомное число 0 - 99.99
+    // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {
-      return parseInt(Math.random() * 10000) / 100
+      return parseInt(Math.random() * 10000)
     }
   }
 }
@@ -124,6 +132,13 @@ export default {
 .dice-user-value-wrapper {
   display: block;
   width: 121px;
+  float: left;
+}
+
+.dice-result-wrapper {
+  display: block;
+  width: 504px;
+  /* margin-left: 121px; */
   float: left;
 }
 
