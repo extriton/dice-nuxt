@@ -222,7 +222,7 @@ export default {
   width: 2px;
   height: 80px;
   background-color: #50CC00;
-  transition: all .2s ease-out 1.3s;
+  transition: left .2s ease-out 1.3s, background-color .2s ease-out 1.3s;
 }
 
 .dice-slider .caption .caption-item {

@@ -26,6 +26,7 @@
       <div class="dice-history-wrapper">
         <DiceHistory
           :history="history"
+          :new-value="newValue"
         />
       </div>
       <div class="clearfix" />
@@ -81,7 +82,8 @@ export default {
       score: 350.2,
       // resultType: 0 - default, 1 - win, 2 - lose
       resultType: 0,
-      history: [13.12, -15.4, -6.2, 52.30, 17.12, -5.65]
+      history: [13.12, -15.4, -6.2, 52.30, 17.12, -5.65],
+      newValue: false
     }
   },
   methods: {
@@ -96,9 +98,16 @@ export default {
     // Начинает розыгрыш
     dicePlay () {
       this.gameValue = this.generateResult()
-      // For test: push random value -99.99 .. 99.99 to history array
-      const tmp = (parseInt(Math.random() * 20000) - 9999) / 100
+      // For test: push value -99.99 .. 99.99 to history array
+      let tmp
+      // tmp = (parseInt(Math.random() * 20000) - 9999) / 100
+      tmp = this.gameValue / 100
+      if ((tmp <= this.userValue && this.reversed) || (tmp >= this.userValue && !this.reversed)) {
+        tmp *= -1
+      }
+
       this.history.push(tmp)
+      this.newValue = !this.newValue
     },
     // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {
