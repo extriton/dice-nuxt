@@ -87,11 +87,11 @@ export default {
     },
     // Начинает розыгрыш
     dicePlay () {
-      const result = parseInt(this.generateResult()) / 100
+      console.log(this.generateResult())
     },
-    // Заглушка генерирующая рандомное число
+    // Заглушка генерирующая рандомное число 0 - 99.99
     generateResult () {
-      return Math.random() * 10000
+      return parseInt(Math.random() * 10000) / 100
     }
   }
 }
@@ -117,9 +117,8 @@ export default {
 
 .dice-result-block {
   width: 743px;
-  height: 134px;
+  height: 133px;
   margin: 0 auto 45px auto;
-  border: 1px solid grey;
 }
 
 .dice-user-value-wrapper {
@@ -131,8 +130,6 @@ export default {
 .dice-history-wrapper {
   display: block;
   width: 53px;
-  height: 134px;
-  border: 1px solid #555;
   float: right;
 }
 
@@ -140,7 +137,7 @@ export default {
   width: 743px;
   margin: 0 auto;
   position: relative;
-  margin: 0 auto 43px auto;
+  margin: 0 auto 44px auto;
 }
 
 .dice-slider-wrapper .dice-reverse-wrapper {

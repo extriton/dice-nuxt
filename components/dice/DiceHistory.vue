@@ -4,8 +4,9 @@
       v-for="(item, index) in formatHistory"
       :key="'h' + index"
       class="dice-history-item"
+      :class="{ lose: item < 0 }"
     >
-      {{ item }}
+      {{ item | formatItem}}
     </li>
   </ul>
 </template>
@@ -21,7 +22,12 @@ export default {
   },
   computed: {
     formatHistory () {
-      return this.history.slice(0, 5)
+      return this.history.slice(-5).reverse()
+    }
+  },
+  filters: {
+    formatItem (value) {
+      return Math.abs(value).toFixed(2)
     }
   }
 }
@@ -30,18 +36,27 @@ export default {
 <style>
 .dice-history {
   width: 53px;
-  height: 134px;
-  padding: 3px 0;
+  height: 133px;
+  padding-top: 8px;
   overflow: hidden;
 }
 
 .dice-history-item {
   display: block;
   height: 22px;
+  padding: 3px 13px;
   border-radius: 11.5px;
   background-color: rgba(255, 255, 255, 0.1);
   margin-bottom: 10px;
   text-align: center;
+  color: #91ff4a;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: normal;
+}
+
+.dice-history-item.lose {
+  color: #ff6764;
 }
 
 .dice-history-item:nth-child(1) { opacity: 1 }
