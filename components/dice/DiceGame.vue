@@ -100,20 +100,29 @@ export default {
     },
     // Начинает розыгрыш
     dicePlay () {
-      this.gameValue = this.generateResult()
-      // For test: push value -99.99 .. 99.99 to history array
-      let tmp
-      // tmp = (parseInt(Math.random() * 20000) - 9999) / 100
-      tmp = this.gameValue / 100
-      if ((tmp <= this.userValue && this.reversed) || (tmp >= this.userValue && !this.reversed)) {
-        tmp *= -1
-        this.resultType = 2
-      } else {
-        this.resultType = 1
-      }
+      // Сбрасываем в дефолт стили и классы элементов
+      this.resultType = 0
+      // Эмуляция получения ответа с сервера
+      this.onServerResponse()
+    },
+    // Эмуляция получения ответа с сервера
+    onServerResponse () {
+      setTimeout(() => {
+        this.gameValue = this.generateResult()
+        // For test: push value -99.99 .. 99.99 to history array
+        let tmp
+        // tmp = (parseInt(Math.random() * 20000) - 9999) / 100
+        tmp = this.gameValue / 100
+        if ((tmp <= this.userValue && this.reversed) || (tmp >= this.userValue && !this.reversed)) {
+          tmp *= -1
+          this.resultType = 2
+        } else {
+          this.resultType = 1
+        }
 
-      this.history.push(tmp)
-      this.gameCounter++
+        this.history.push(tmp)
+        this.gameCounter++
+      }, 0)
     },
     // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {
@@ -180,11 +189,6 @@ export default {
   bottom: 0;
   transform: translate(-50%, 50%);
 }
-/*
-.dice-play-button-wrapper {
-  height: 50px;
-}
-*/
 
 .clearfix {
   clear: both;

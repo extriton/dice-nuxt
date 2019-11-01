@@ -2,18 +2,19 @@
   <div class="dice-score">
     <div class="left-corner">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30">
-        <path class="svg-corner" :fill="cornerStyle.color" :fill-opacity="cornerStyle.opacity" fill-rule="nonzero" d="M3 0A3 3 0 0 0 .504 4.664L7.394 15 .505 25.336A3 3 0 0 0 3 30h18a3 3 0 0 0 3-3v-1h-.999L23 27a2 2 0 0 1-1.85 1.995L21 29H3a2 2 0 0 1-1.664-3.11l6.89-10.335a1 1 0 0 0 0-1.11L1.337 4.11A2 2 0 0 1 3 1h8V0z" />
+        <path class="svg-corner" :class="classObj" fill-rule="nonzero" d="M3 0A3 3 0 0 0 .504 4.664L7.394 15 .505 25.336A3 3 0 0 0 3 30h18a3 3 0 0 0 3-3v-1h-.999L23 27a2 2 0 0 1-1.85 1.995L21 29H3a2 2 0 0 1-1.664-3.11l6.89-10.335a1 1 0 0 0 0-1.11L1.337 4.11A2 2 0 0 1 3 1h8V0z" />
       </svg>
     </div>
+    <!-- :style="borderStyle" -->
     <div
       class="dice-score-value"
-      :style="borderStyle"
+      :class="classObj"
     >
       Выигрыш: <span class="value">{{ formatScore }} &#8381;</span>
     </div>
     <div class="right-corner">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30">
-        <path class="svg-corner" :fill="cornerStyle.color" :fill-opacity="cornerStyle.opacity" fill-rule="nonzero" d="M21 0a3 3 0 0 1 2.496 4.664L16.606 15l6.89 10.336A3 3 0 0 1 21 30H3a3 3 0 0 1-3-3v-1h.999L1 27a2 2 0 0 0 1.85 1.995L3 29h18a2 2 0 0 0 1.664-3.11l-6.89-10.335a1 1 0 0 1 0-1.11l6.89-10.336A2 2 0 0 0 21 1h-8V0z" />
+        <path class="svg-corner" :class="classObj" fill-rule="nonzero" d="M21 0a3 3 0 0 1 2.496 4.664L16.606 15l6.89 10.336A3 3 0 0 1 21 30H3a3 3 0 0 1-3-3v-1h.999L1 27a2 2 0 0 0 1.85 1.995L3 29h18a2 2 0 0 0 1.664-3.11l-6.89-10.335a1 1 0 0 1 0-1.11l6.89-10.336A2 2 0 0 0 21 1h-8V0z" />
       </svg>
     </div>
   </div>
@@ -37,40 +38,13 @@ export default {
     formatScore () {
       return parseFloat(this.score).toFixed(2)
     },
-    // Возвращает объект стиля (color, opacity) для svg corner в зависимости от результат игры
-    cornerStyle () {
-      // Default
-      const style = {
-        color: '#FFF',
-        opacity: 0.1
+    // Выставлеят класс для блока и корнеров в зависиомсти от типа результата
+    classObj () {
+      return {
+        'default': this.resultType === 0,
+        'win': this.resultType === 1,
+        'lose': this.resultType === 2
       }
-      // Win
-      if (this.resultType === 1) {
-        style.color = '#64FF00'
-        style.opacity = 0.3
-      }
-      // Lose
-      if (this.resultType === 2) {
-        style.color = '#FF3E3E'
-        style.opacity = 0.3
-      }
-      return style
-    },
-    // Возвращает объект стиля (color) для рамки центрального блока
-    borderStyle () {
-      // Default
-      const style = {
-        borderColor: 'rgba(255, 255, 255, 0.1)'
-      }
-      // Win
-      if (this.resultType === 1) {
-        style.borderColor = 'rgba(100, 255, 0, 0.3)'
-      }
-      // Lose
-      if (this.resultType === 2) {
-        style.borderColor = 'rgba(255, 62, 62, 0.4)'
-      }
-      return style
     }
   }
 }
@@ -92,19 +66,44 @@ export default {
   height: 30px;
   line-height: 30px;
   border-radius: 5px;
-  border: solid 1px rgba(255, 255, 255, 0.1);
   font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
   color: #a698af;
   text-align: center;
-  transition: border-color .25s ease-out 1.3s;
 }
 
-.svg-corner {
+.dice-score .dice-score-value.default {
+  /* transition: border-color .25s ease-out; */
+  transition: none;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.dice-score .dice-score-value.win {
+  transition: border-color .25s ease-out 1.3s;
+  border: solid 1px rgba(100, 255, 0, 0.3);
+}
+
+.dice-score .dice-score-value.lose {
+  transition: border-color .25s ease-out 1.3s;
+  border: solid 1px rgba(255, 62, 62, 0.4);
+}
+
+.svg-corner.default {
+  /* transition: all .25s ease-out; */
+  transition: none;
+  fill: #fff;
+  fill-opacity: 0.1;
+}
+
+.svg-corner.win {
   transition: all .25s ease-out 1.3s;
+  fill: #64ff00;
+  fill-opacity: 0.3;
+}
+
+.svg-corner.lose {
+  transition: all .25s ease-out 1.3s;
+  fill: #ff3e3e;
+  fill-opacity: 0.3;
 }
 
 .dice-score .dice-score-value .value {
