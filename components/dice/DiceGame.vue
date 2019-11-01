@@ -122,6 +122,18 @@ export default {
 
         this.history.push(tmp)
         this.gameCounter++
+
+        // Проигрываем аудио выигрыша/проигрыша
+        setTimeout(() => {
+          const snd = new Audio()
+          if (this.resultType === 1) {
+            snd.src = 'Win.mp3'
+          } else {
+            snd.src = 'Lose.mp3'
+          }
+          snd.volume = 0.4
+          snd.autoplay = true
+        }, 1300)
       }, 150)
     },
     // Заглушка генерирующая рандомное число 0 - 9999
