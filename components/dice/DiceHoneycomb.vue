@@ -5,15 +5,6 @@
         {{ digit }}
       </div>
     </div>
-    <!--
-    <svg class="clip-svg">
-      <defs>
-        <clipPath id="clip-svg" clipPathUnits="objectBoundingBox">
-          <polygon points="0.5 0, 1 0.3, 1 0.7, 0.5 1, 0 0.7, 0 0.3" />
-        </clipPath>
-      </defs>
-    </svg>
-    -->
   </div>
 </template>
 
@@ -23,10 +14,6 @@ export default {
   props: {
     digit: {
       type: String,
-      required: true
-    },
-    resultType: {
-      type: Number,
       required: true
     }
   }

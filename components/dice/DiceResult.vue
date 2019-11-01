@@ -21,7 +21,6 @@
     <div class="dice-honeycomb-wrap">
       <DiceHoneycomb
         :digit="result.charAt(3)"
-        :result-type="resultType"
       />
     </div>
     <div class="clearfix" />
