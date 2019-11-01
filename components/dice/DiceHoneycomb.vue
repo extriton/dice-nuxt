@@ -1,9 +1,22 @@
 <template>
   <div class="dice-honeycomb">
     <div class="clip-wrap">
-      <div class="dice-honeycomb-digit">
-        {{ digit }}
-      </div>
+      <transition name="odometr">
+        <ul
+          ref="digits"
+          :key="transitionKey"
+          class="dice-honeycomb-digits"
+          :class="{animated: animated}"
+        >
+          <li
+            v-for="(item, index) in outArray"
+            :key="'d' + index"
+            class="dice-honeycomb-digit"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </transition>
     </div>
   </div>
 </template>
@@ -13,8 +26,57 @@ export default {
   name: 'DiceHoneycomb',
   props: {
     digit: {
-      type: String,
+      type: Number,
       required: true
+    },
+    delay: {
+      type: Number,
+      required: true
+    },
+    gameCounter: {
+      type: Number,
+      required: true
+    }
+  },
+  data () {
+    return {
+      transitionKey: false,
+      digitsArray: [this.digit],
+      animated: false
+    }
+  },
+  computed: {
+    outArray () {
+      return this.digitsArray
+    }
+  },
+  watch: {
+    gameCounter (val) {
+      if (val > 0) {
+        const digitsArray = []
+        const oldDigit = this.digitsArray[this.digitsArray.length - 1]
+        for (let i = oldDigit; i >= 0; i--) {
+          digitsArray.push(i)
+        }
+        for (let i = 9; i >= 0; i--) {
+          digitsArray.push(i)
+        }
+        for (let i = 9; i >= parseInt(this.digit); i--) {
+          digitsArray.push(i)
+        }
+        this.digitsArray = digitsArray
+
+        setTimeout(() => {
+          this.transitionKey = !this.transitionKey
+          setTimeout(() => {
+            this.digitsArray = this.digitsArray.slice(-1)
+            this.animated = true
+            setTimeout(() => {
+              this.animated = false
+            }, 200)
+          }, 1000)
+        }, this.delay)
+      }
     }
   }
 }
@@ -24,6 +86,7 @@ export default {
 .dice-honeycomb {
   width: 117px;
   height: 134px;
+  overflow: hidden;
 }
 
 .clip-wrap {
@@ -38,11 +101,68 @@ export default {
 .dice-honeycomb-digit {
   position: relative;
   width: 35px;
-  height: 66px;
+  height: 107px;
   font-size: 65px;
   font-weight: bold;
   color: #fff;
   margin: 0 0 0 34px;
   line-height: 103px;
+  transform: translateY(calc(-100% + 107px));
 }
+
+.odometr-enter-active {
+  transition: transform 1s cubic-bezier(0.29, 0.01, .02, 0.99);
+}
+.odometr-enter { transform: translateY(0); }
+.odometr-enter-to { transform: translateY(calc(-100% + 107px)); }
+
+.animated {
+    animation: bounce .2s infinite;
+}
+
+@keyframes bounce {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5%);
+  }
+  75% {
+      transform: translateY(2.5%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+  /*
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+  */
+}
+
+.bounce {
+  animation-name: bounce;
+  transform-origin: center bottom;
+}
+
 </style>

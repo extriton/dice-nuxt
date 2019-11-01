@@ -44,7 +44,7 @@ export default {
 <style>
 .dice-history {
   width: 53px;
-  height: 133px;
+  max-height: 133px;
   padding-top: 8px;
   overflow: hidden;
 }

@@ -2,25 +2,30 @@
   <div class="dice-result">
     <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
-        :digit="result.charAt(0)"
-        :result-type="resultType"
+        :digit="parseInt(result.charAt(0))"
+        :delay="0"
+        :game-counter="gameCounter"
       />
     </div>
     <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
-        :digit="result.charAt(1)"
-        :result-type="resultType"
+        :digit="parseInt(result.charAt(1))"
+        :delay="100"
+        :game-counter="gameCounter"
       />
     </div>
     <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
-        :digit="result.charAt(2)"
-        :result-type="resultType"
+        :digit="parseInt(result.charAt(2))"
+        :delay="200"
+        :game-counter="gameCounter"
       />
     </div>
     <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
-        :digit="result.charAt(3)"
+        :digit="parseInt(result.charAt(3))"
+        :delay="300"
+        :game-counter="gameCounter"
       />
     </div>
     <div class="clearfix" />
