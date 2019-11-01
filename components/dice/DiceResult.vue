@@ -1,39 +1,35 @@
 <template>
   <div class="dice-result">
-    <div class="dice-result-item">
-      <div class="clip-wrap">
-        <div class="dice-result-item-value">
-          {{ result.charAt(0) }}
-        </div>
-      </div>
+    <div class="dice-honeycomb-wrap">
+      <DiceHoneycomb
+        :digit="result.charAt(0)"
+        :result-type="resultType"
+      />
     </div>
-    <div class="dice-result-item">
-      <div class="clip-wrap">
-        <div class="dice-result-item-value">
-          {{ result.charAt(1) }}
-        </div>
-      </div>
+    <div class="dice-honeycomb-wrap">
+      <DiceHoneycomb
+        :digit="result.charAt(1)"
+        :result-type="resultType"
+      />
     </div>
-    <div class="dice-result-item">
-      <div class="clip-wrap">
-        <div class="dice-result-item-value">
-          {{ result.charAt(2) }}
-        </div>
-      </div>
+    <div class="dice-honeycomb-wrap">
+      <DiceHoneycomb
+        :digit="result.charAt(2)"
+        :result-type="resultType"
+      />
     </div>
-    <div class="dice-result-item">
-      <div class="clip-wrap">
-        <div class="dice-result-item-value">
-          {{ result.charAt(3) }}
-        </div>
-      </div>
+    <div class="dice-honeycomb-wrap">
+      <DiceHoneycomb
+        :digit="result.charAt(3)"
+        :result-type="resultType"
+      />
     </div>
     <div class="clearfix" />
     <div class="dice-result-dot" />
     <svg class="clip-svg">
       <defs>
         <clipPath id="clip-svg" clipPathUnits="objectBoundingBox">
-          <polygon points="0.5 0, 1 0.33, 1 0.66, 0.5 1, 0 0.66, 0 0.33" />
+          <polygon points="0.5 0, 1 0.3, 1 0.7, 0.5 1, 0 0.7, 0 0.3" />
         </clipPath>
       </defs>
     </svg>
@@ -41,14 +37,23 @@
 </template>
 
 <script>
+import DiceHoneycomb from '~/components/dice/DiceHoneycomb.vue'
+
 export default {
   name: 'DiceResult',
+  components: {
+    DiceHoneycomb
+  },
   props: {
     gameValue: {
       type: Number,
       required: true
     },
     gameCounter: {
+      type: Number,
+      required: true
+    },
+    resultType: {
       type: Number,
       required: true
     }
@@ -80,35 +85,27 @@ export default {
   position: relative;
 }
 
-.dice-result-item {
+.dice-honeycomb-wrap {
   width: 117px;
   height: 134px;
   margin-right: 12px;
-  background: url('~assets/honeycomb_yellow.png') no-repeat transparent;
   float: left;
+  background: url('~assets/honeycomb_yellow.png') no-repeat transparent;
+  background-size: cover;
 }
 
-.dice-result-item:nth-child(4) {
+.dice-honeycomb-wrap:nth-child(4) {
   margin-right: 0;
 }
 
-.clip-wrap {
-  width: 101px;
-  height: 107px;
-  margin-top: 14px;
-  margin-left: 8px;
-  -webkit-clip-path: url("#clip-svg");
-  clip-path: url("#clip-svg");
+.dice-honeycomb-wrap.win {
+  background: url('~assets/honeycomb_green.png') no-repeat transparent;
+  background-size: cover;
 }
 
-.dice-result-item-value {
-  position: relative;
-  width: 35px;
-  height: 66px;
-  font-size: 65px;
-  color: #fff;
-  margin: 33px 0 0 34px;
-  line-height: 1;
+.dice-honeycomb-wrap.lose {
+  background: url('~assets/honeycomb_red.png') no-repeat transparent;
+  background-size: cover;
 }
 
 .dice-result-dot {
@@ -119,6 +116,14 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   background: url('~assets/dot_yellow.png') no-repeat transparent;
+}
+
+.dice-result-dot.win {
+  background: url('~assets/dot_green.png') no-repeat transparent;
+}
+
+.dice-result-dot.lose {
+  background: url('~assets/dot_red.png') no-repeat transparent;
 }
 
 .clearfix {

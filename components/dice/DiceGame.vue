@@ -21,6 +21,7 @@
         <DiceResult
           :game-value="gameValue"
           :game-counter="gameCounter"
+          :result-type="resultType"
         />
       </div>
       <!-- History -->
