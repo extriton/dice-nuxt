@@ -1,30 +1,30 @@
 <template>
   <div class="dice-result">
-    <div class="dice-honeycomb-wrap">
+    <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
         :digit="result.charAt(0)"
         :result-type="resultType"
       />
     </div>
-    <div class="dice-honeycomb-wrap">
+    <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
         :digit="result.charAt(1)"
         :result-type="resultType"
       />
     </div>
-    <div class="dice-honeycomb-wrap">
+    <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
         :digit="result.charAt(2)"
         :result-type="resultType"
       />
     </div>
-    <div class="dice-honeycomb-wrap">
+    <div class="dice-honeycomb-wrap" :class="classObj">
       <DiceHoneycomb
         :digit="result.charAt(3)"
       />
     </div>
     <div class="clearfix" />
-    <div class="dice-result-dot" />
+    <div class="dice-result-dot" :class="classObj" />
     <svg class="clip-svg">
       <defs>
         <clipPath id="clip-svg" clipPathUnits="objectBoundingBox">
@@ -72,6 +72,14 @@ export default {
       }
 
       return res
+    },
+    // Выставлеят класс для блока и корнеров в зависиомсти от типа результата
+    classObj () {
+      return {
+        'default': this.resultType === 0,
+        'win': this.resultType === 1,
+        'lose': this.resultType === 2
+      }
     }
   }
 }
@@ -89,22 +97,28 @@ export default {
   height: 134px;
   margin-right: 12px;
   float: left;
-  background: url('~assets/honeycomb_yellow.png') no-repeat transparent;
-  background-size: cover;
 }
 
 .dice-honeycomb-wrap:nth-child(4) {
   margin-right: 0;
 }
 
+.dice-honeycomb-wrap.default {
+  background: url('~assets/honeycomb_yellow.png') no-repeat transparent;
+  background-size: cover;
+  transition: all .1s ease-out;
+}
+
 .dice-honeycomb-wrap.win {
   background: url('~assets/honeycomb_green.png') no-repeat transparent;
   background-size: cover;
+  transition: all .1s ease-out 1.2s;
 }
 
 .dice-honeycomb-wrap.lose {
   background: url('~assets/honeycomb_red.png') no-repeat transparent;
   background-size: cover;
+  transition: all .1s ease-out 1.2s;
 }
 
 .dice-result-dot {
@@ -114,15 +128,21 @@ export default {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.dice-result-dot.default {
   background: url('~assets/dot_yellow.png') no-repeat transparent;
+  transition: all .1s ease-out;
 }
 
 .dice-result-dot.win {
   background: url('~assets/dot_green.png') no-repeat transparent;
+  transition: all .1s ease-out 1.2s;
 }
 
 .dice-result-dot.lose {
   background: url('~assets/dot_red.png') no-repeat transparent;
+  transition: all .1s ease-out 1.2s;
 }
 
 .clearfix {

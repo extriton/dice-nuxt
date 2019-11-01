@@ -72,36 +72,34 @@ export default {
 }
 
 .dice-score .dice-score-value.default {
-  /* transition: border-color .25s ease-out; */
-  transition: none;
+  transition: border-color .1s ease-out;
   border: solid 1px rgba(255, 255, 255, 0.1);
 }
 
 .dice-score .dice-score-value.win {
-  transition: border-color .25s ease-out 1.3s;
+  transition: border-color .1s ease-out 1.2s;
   border: solid 1px rgba(100, 255, 0, 0.3);
 }
 
 .dice-score .dice-score-value.lose {
-  transition: border-color .25s ease-out 1.3s;
+  transition: border-color .1s ease-out 1.2s;
   border: solid 1px rgba(255, 62, 62, 0.4);
 }
 
 .svg-corner.default {
-  /* transition: all .25s ease-out; */
-  transition: none;
+  transition: all .1s ease-out;
   fill: #fff;
   fill-opacity: 0.1;
 }
 
 .svg-corner.win {
-  transition: all .25s ease-out 1.3s;
+  transition: all .1s ease-out 1.2s;
   fill: #64ff00;
   fill-opacity: 0.3;
 }
 
 .svg-corner.lose {
-  transition: all .25s ease-out 1.3s;
+  transition: all .1s ease-out 1.2s;
   fill: #ff3e3e;
   fill-opacity: 0.3;
 }

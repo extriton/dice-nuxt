@@ -122,7 +122,7 @@ export default {
 
         this.history.push(tmp)
         this.gameCounter++
-      }, 0)
+      }, 150)
     },
     // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {
