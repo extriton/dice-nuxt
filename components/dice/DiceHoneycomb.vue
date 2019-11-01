@@ -5,6 +5,7 @@
         {{ digit }}
       </div>
     </div>
+    <!--
     <svg class="clip-svg">
       <defs>
         <clipPath id="clip-svg" clipPathUnits="objectBoundingBox">
@@ -12,6 +13,7 @@
         </clipPath>
       </defs>
     </svg>
+    -->
   </div>
 </template>
 
