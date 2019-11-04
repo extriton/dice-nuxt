@@ -116,20 +116,20 @@ export default {
 }
 
 .dice-honeycomb-img.default {
-  background: url('~assets/honeycomb_yellow.png') no-repeat transparent;
-  background-size: cover;
+  background: url('~assets/honeycomb_yellow.png') no-repeat;
+  background-size: contain;
   transition: all .1s ease-out;
 }
 
 .dice-honeycomb-img.win {
-  background: url('~assets/honeycomb_green.png') no-repeat transparent;
-  background-size: cover;
+  background: url('~assets/honeycomb_green.png') no-repeat;
+  background-size: contain;
   transition: all .1s ease-out 1.2s;
 }
 
 .dice-honeycomb-img.lose {
-  background: url('~assets/honeycomb_red.png') no-repeat transparent;
-  background-size: cover;
+  background: url('~assets/honeycomb_red.png') no-repeat;
+  background-size: contain;
   transition: all .1s ease-out 1.2s;
 }
 
