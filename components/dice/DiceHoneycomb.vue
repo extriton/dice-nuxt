@@ -94,8 +94,7 @@ export default {
   height: 107px;
   margin-top: 14px;
   margin-left: 8px;
-  -webkit-clip-path: url("#clip-svg");
-  clip-path: url("#clip-svg");
+  overflow: hidden;
 }
 
 .dice-honeycomb-digit {
@@ -133,10 +132,5 @@ export default {
   100% {
       transform: translateY(0);
   }
-}
-
-.bounce {
-  animation-name: bounce;
-  transform-origin: center bottom;
 }
 </style>

@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="117" height="134" viewBox="0 0 117 134">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="133" viewBox="0 0 118 133">
     <defs>
         <path id="b" d="M64.803 2.503l46.787 27.61a11 11 0 0 1 5.41 9.473v54.17a11 11 0 0 1-5.322 9.42l-46.742 28.172a11 11 0 0 1-11.276.048L5.403 102.87A11 11 0 0 1 0 93.4v-53.99a11 11 0 0 1 5.56-9.561L53.772 2.416a11 11 0 0 1 11.03.087zm-4.726 11.725a2.498 2.498 0 0 0-2.502-.008L12.253 40.265A2.498 2.498 0 0 0 11 42.431v49.122c0 .88.463 1.694 1.218 2.145l45.322 27.033c.793.473 1.782.47 2.572-.007L104.795 93.7A2.498 2.498 0 0 0 106 91.563V42.42c0-.889-.472-1.71-1.24-2.158z"/>
-        <filter id="a" width="100.9%" height="101.5%" x="-.4%" y="-.4%" filterUnits="objectBoundingBox">
-            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+        <filter id="a" width="101.7%" height="100.8%" x="-.4%" y="-.4%" filterUnits="objectBoundingBox">
+            <feOffset dx="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
             <feComposite in="shadowOffsetOuter1" in2="SourceAlpha" operator="out" result="shadowOffsetOuter1"/>
             <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.15 0"/>
         </filter>
@@ -12,7 +12,7 @@
             <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation="3.5"/>
             <feOffset dx="-5" in="shadowBlurInner1" result="shadowOffsetInner1"/>
             <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
-            <feColorMatrix in="shadowInnerInner1" result="shadowMatrixInner1" values="0 0 0 0 0.642436594 0 0 0 0 0.268602055 0 0 0 0 0.120175306 0 0 0 0.603638549 0"/>
+            <feColorMatrix in="shadowInnerInner1" result="shadowMatrixInner1" values="0 0 0 0 0.402513587 0 0 0 0 0 0 0 0 0 0 0 0 0 0.603638549 0"/>
             <feGaussianBlur in="SourceAlpha" result="shadowBlurInner2" stdDeviation="2.5"/>
             <feOffset dx="5" in="shadowBlurInner2" result="shadowOffsetInner2"/>
             <feComposite in="shadowOffsetInner2" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner2"/>
@@ -31,12 +31,12 @@
         <mask id="d" fill="#fff">
             <use xlink:href="#c"/>
         </mask>
-        <use fill="#FFCC21" xlink:href="#c"/>
-        <path fill="#FFD95A" d="M-2 1v25.706L37.545 47 59 33.118z" mask="url(#d)" transform="matrix(-1 0 0 1 57 0)"/>
-        <path fill="#D89A00" d="M-1 88v26.225L38.775 137 59 124.577z" mask="url(#d)" transform="rotate(180 29 112.5)"/>
-        <path fill="#EFB600" d="M59 88v26.225L97.182 137 119 125.958z" mask="url(#d)" transform="matrix(1 0 0 -1 0 225)"/>
-        <path fill="#FFE690" d="M59 .87v25.89L98.045 46.2l24.235-13.99z" mask="url(#d)"/>
-        <path fill="#FECB20" d="M118.13 33.64L92.14 50.025l9.575 40.962 15.047 8.193z" mask="url(#d)" opacity=".2"/>
+        <use fill="#FF2929" xlink:href="#c"/>
+        <path fill="#FF5656" d="M-2 1v25.706L37.545 47 59 33.118z" mask="url(#d)" transform="matrix(-1 0 0 1 57 0)"/>
+        <path fill="#B80000" d="M-1 88v26.225L38.775 137 59 124.577z" mask="url(#d)" transform="rotate(180 29 112.5)"/>
+        <path fill="#E40000" d="M59 88v26.225L97.182 137 119 125.958z" mask="url(#d)" transform="matrix(1 0 0 -1 0 225)"/>
+        <path fill="#FF6F6F" d="M59 .87v25.89L98.045 46.2l24.235-13.99z" mask="url(#d)"/>
+        <path fill="#FE2020" d="M118.13 33.64L92.14 50.025l9.575 40.962 15.047 8.193z" mask="url(#d)" opacity=".2"/>
         <g fill="#000" mask="url(#d)" transform="rotate(90 58.5 67.565)">
             <use filter="url(#e)" xlink:href="#f"/>
         </g>

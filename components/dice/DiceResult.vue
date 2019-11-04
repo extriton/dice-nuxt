@@ -1,27 +1,31 @@
 <template>
   <div class="dice-result">
-    <div class="dice-honeycomb-wrap" :class="classObj">
+    <div class="dice-honeycomb-wrap">
+      <div class="dice-honeycomb-img" :class="classObj" />
       <DiceHoneycomb
         :digit="parseInt(result.charAt(0))"
         :delay="0"
         :game-counter="gameCounter"
       />
     </div>
-    <div class="dice-honeycomb-wrap" :class="classObj">
+    <div class="dice-honeycomb-wrap">
+      <div class="dice-honeycomb-img" :class="classObj" />
       <DiceHoneycomb
         :digit="parseInt(result.charAt(1))"
         :delay="100"
         :game-counter="gameCounter"
       />
     </div>
-    <div class="dice-honeycomb-wrap" :class="classObj">
+    <div class="dice-honeycomb-wrap">
+      <div class="dice-honeycomb-img" :class="classObj" />
       <DiceHoneycomb
         :digit="parseInt(result.charAt(2))"
         :delay="200"
         :game-counter="gameCounter"
       />
     </div>
-    <div class="dice-honeycomb-wrap" :class="classObj">
+    <div class="dice-honeycomb-wrap">
+      <div class="dice-honeycomb-img" :class="classObj" />
       <DiceHoneycomb
         :digit="parseInt(result.charAt(3))"
         :delay="300"
@@ -30,13 +34,6 @@
     </div>
     <div class="clearfix" />
     <div class="dice-result-dot" :class="classObj" />
-    <svg class="clip-svg">
-      <defs>
-        <clipPath id="clip-svg" clipPathUnits="objectBoundingBox">
-          <polygon points="0.5 0, 1 0.3, 1 0.7, 0.5 1, 0 0.7, 0 0.3" />
-        </clipPath>
-      </defs>
-    </svg>
   </div>
 </template>
 
@@ -98,6 +95,7 @@ export default {
 }
 
 .dice-honeycomb-wrap {
+  position: relative;
   width: 117px;
   height: 134px;
   margin-right: 12px;
@@ -108,19 +106,28 @@ export default {
   margin-right: 0;
 }
 
-.dice-honeycomb-wrap.default {
+.dice-honeycomb-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.dice-honeycomb-img.default {
   background: url('~assets/honeycomb_yellow.png') no-repeat transparent;
   background-size: cover;
   transition: all .1s ease-out;
 }
 
-.dice-honeycomb-wrap.win {
+.dice-honeycomb-img.win {
   background: url('~assets/honeycomb_green.png') no-repeat transparent;
   background-size: cover;
   transition: all .1s ease-out 1.2s;
 }
 
-.dice-honeycomb-wrap.lose {
+.dice-honeycomb-img.lose {
   background: url('~assets/honeycomb_red.png') no-repeat transparent;
   background-size: cover;
   transition: all .1s ease-out 1.2s;
