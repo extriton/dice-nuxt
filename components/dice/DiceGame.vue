@@ -107,34 +107,28 @@ export default {
     },
     // Эмуляция получения ответа с сервера
     onServerResponse () {
+      this.gameValue = this.generateResult()
+      this.gameCounter++
+
+      let tmp
+      tmp = this.gameValue / 100
+      if ((tmp <= this.userValue && this.reversed) || (tmp >= this.userValue && !this.reversed)) {
+        tmp *= -1
+      }
+      this.history.push(tmp)
+
       setTimeout(() => {
-        this.gameValue = this.generateResult()
-        // For test: push value -99.99 .. 99.99 to history array
-        let tmp
-        // tmp = (parseInt(Math.random() * 20000) - 9999) / 100
-        tmp = this.gameValue / 100
-        if ((tmp <= this.userValue && this.reversed) || (tmp >= this.userValue && !this.reversed)) {
-          tmp *= -1
-          this.resultType = 2
-        } else {
+        const snd = new Audio()
+        if (tmp > 0) {
           this.resultType = 1
+          snd.src = 'Win.mp3'
+        } else {
+          this.resultType = 2
+          snd.src = 'Lose.mp3'
         }
-
-        this.history.push(tmp)
-        this.gameCounter++
-
-        // Проигрываем аудио выигрыша/проигрыша
-        setTimeout(() => {
-          const snd = new Audio()
-          if (this.resultType === 1) {
-            snd.src = 'Win.mp3'
-          } else {
-            snd.src = 'Lose.mp3'
-          }
-          snd.volume = 0.4
-          snd.autoplay = true
-        }, 1300)
-      }, 150)
+        snd.volume = 0.4
+        snd.autoplay = true
+      }, 1200)
     },
     // Заглушка генерирующая рандомное число 0 - 9999
     generateResult () {
