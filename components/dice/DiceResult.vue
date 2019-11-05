@@ -152,21 +152,21 @@ export default {
 }
 
 .dice-result-dot {
-  width: 14px;
-  height: 17px;
+  width: 20px;
+  height: 22px;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  position: relative;
+  position: absolute;
 }
 
 .dice-dot-img img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 14px;
-  height: 17px;
+  width: 20px;
+  height: 22px;
 }
 
 .dice-honeycomb-img.default .yellow,
