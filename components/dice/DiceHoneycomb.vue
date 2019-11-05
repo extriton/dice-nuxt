@@ -64,12 +64,17 @@ export default {
         for (let i = 9; i >= parseInt(this.digit); i--) {
           digitsArray.push(i)
         }
+        if (this.digit > 0) {
+          digitsArray.push(this.digit - 1)
+        } else {
+          digitsArray.push(9)
+        }
         this.digitsArray = digitsArray
 
         setTimeout(() => {
           this.transitionKey = !this.transitionKey
           setTimeout(() => {
-            this.digitsArray = this.digitsArray.slice(-1)
+            this.digitsArray = this.digitsArray.slice(-2)
             this.animated = true
             setTimeout(() => {
               this.animated = false
