@@ -82,7 +82,7 @@ export default {
         setTimeout(() => {
           this.animated = false
         }, 200)
-      }, 1000)
+      }, 1000 + this.delay)
     }
   }
 }
