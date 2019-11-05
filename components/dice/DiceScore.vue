@@ -64,7 +64,7 @@ export default {
   display: inline-block;
   width: 211px;
   height: 30px;
-  line-height: 30px;
+  line-height: 27px;
   border-radius: 5px;
   font-size: 12px;
   color: #a698af;
@@ -77,12 +77,12 @@ export default {
 }
 
 .dice-score .dice-score-value.win {
-  transition: border-color .1s ease-out 1.2s;
+  transition: border-color .1s ease-out;
   border: solid 1px rgba(100, 255, 0, 0.3);
 }
 
 .dice-score .dice-score-value.lose {
-  transition: border-color .1s ease-out 1.2s;
+  transition: border-color .1s ease-out;
   border: solid 1px rgba(255, 62, 62, 0.4);
 }
 
@@ -93,13 +93,13 @@ export default {
 }
 
 .svg-corner.win {
-  transition: all .1s ease-out 1.2s;
+  transition: all .1s ease-out;
   fill: #64ff00;
   fill-opacity: 0.3;
 }
 
 .svg-corner.lose {
-  transition: all .1s ease-out 1.2s;
+  transition: all .1s ease-out;
   fill: #ff3e3e;
   fill-opacity: 0.3;
 }
