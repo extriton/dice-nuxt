@@ -30,6 +30,11 @@
           :history="history"
           :game-counter="gameCounter"
         />
+        <div class="dice-reverse-wrapper">
+          <DiceReverse
+            @reverse="reverse"
+          />
+        </div>
       </div>
       <div class="clearfix" />
     </div>
@@ -145,8 +150,8 @@ export default {
   font-family: 'Source Sans Pro', sans-serif;
   width: 813px;
   height: 465px;
+  border: 1px solid #000000;
   border-radius: 7px;
-  border: solid 1px #000000;
   background-color: #291a43;
   padding-top: 18px;
 }
@@ -163,21 +168,22 @@ export default {
 }
 
 .dice-user-value-wrapper {
-  display: block;
   width: 121px;
   float: left;
 }
 
 .dice-result-wrapper {
-  display: block;
   width: 504px;
   float: left;
 }
 
 .dice-history-wrapper {
-  display: block;
   width: 53px;
   float: right;
+}
+
+.dice-history-wrapper .dice-reverse-wrapper {
+  display: none;
 }
 
 .dice-slider-wrapper {
@@ -198,5 +204,66 @@ export default {
 
 .clearfix {
   clear: both;
+}
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-game {
+    width: 100%;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    background-color: #291a43;
+    padding: 15px 10px 15px 10px;
+  }
+
+  .dice-score-wrapper {
+    width: 100%;
+    margin: 0 0 16px 0;
+  }
+
+  .dice-result-block {
+    width: 100%;
+    height: auto;
+    margin: 0 auto 45px auto;
+  }
+
+  .dice-user-value-wrapper {
+    width: 100%;
+    float: none;
+    margin-bottom: 5px;
+  }
+
+  .dice-result-wrapper {
+    width: 100%;
+    float: none;
+    margin-bottom: 40px;
+  }
+
+  .dice-history-wrapper {
+    width: 100%;
+    float: none;
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .dice-history-wrapper .dice-reverse-wrapper {
+    display: block;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+  }
+
+  .dice-slider-wrapper {
+    display: none;
+    /* ??? */
+  }
+
+  .dice-slider-wrapper .dice-reverse-wrapper {
+    display: none;
+  }
+
 }
 </style>

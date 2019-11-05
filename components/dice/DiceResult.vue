@@ -181,4 +181,37 @@ export default {
 .clearfix {
   clear: both;
 }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-result {
+    width: 100%;
+    height: 110px;
+    position: relative;
+  }
+
+  .dice-honeycomb-wrap {
+    width: 96px;
+    height: 110px;
+    margin-right: 3px;
+    float: left;
+  }
+
+  .dice-honeycomb-wrap:nth-child(2) {
+    margin-right: 4px;
+  }
+
+  .dice-honeycomb-wrap:nth-child(4) {
+    margin-right: 0;
+  }
+
+  .dice-honeycomb-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 96px;
+    height: 110px;
+  }
+
+}
 </style>

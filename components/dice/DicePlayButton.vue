@@ -54,4 +54,11 @@ export default {
   box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.24);
   background-color: #ffbb00;
 }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-play-button {
+    width: 100%;
+  }
+}
 </style>

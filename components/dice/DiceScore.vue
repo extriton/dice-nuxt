@@ -125,4 +125,18 @@ export default {
 .dice-score .right-corner {
   right: 0;
 }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-score {
+    width: 394px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .dice-score .dice-score-value {
+    width: 368px;
+  }
+}
 </style>

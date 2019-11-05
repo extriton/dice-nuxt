@@ -29,4 +29,17 @@ export default {
   margin: 0 auto;
   margin-left: calc((100% - 813px) / 2 );
 }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .page {
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .dice-game-wrapper {
+    margin: 0;
+  }
+}
 </style>

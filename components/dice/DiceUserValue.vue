@@ -42,4 +42,14 @@ export default {
   letter-spacing: normal;
   color: #5e516d;
 }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-user-value {
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: center;
+  }
+}
 </style>

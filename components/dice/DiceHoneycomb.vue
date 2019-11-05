@@ -148,4 +148,34 @@ export default {
       transform: translateY(0);
   }
 }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-honeycomb {
+    width: 96px;
+    height: 110px;
+    overflow: hidden;
+  }
+
+  .clip-wrap {
+    width: 80px;
+    height: 86px;
+    margin-top: 13px;
+    margin-left: 2px;
+    overflow: hidden;
+  }
+
+  .dice-honeycomb-digit {
+    position: relative;
+    width: 29px;
+    height: 80px;
+    font-size: 53px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 0 34px;
+    line-height: 76px;
+  }
+
+  .odometr-enter-to { transform: translateY(calc(-100% + 71px)); }
+}
 </style>
