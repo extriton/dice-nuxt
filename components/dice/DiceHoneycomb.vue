@@ -1,12 +1,15 @@
 <template>
   <div class="dice-honeycomb">
     <div class="clip-wrap">
-      <transition name="odometr">
+      <transition
+        name="odometr"
+        @before-enter="beforeEnter"
+      >
         <ul
           ref="digits"
-          :key="transitionKey"
+          :key="gameCounter"
           class="dice-honeycomb-digits"
-          :class="{animated: animated}"
+          :class="classObj"
         >
           <li
             v-for="(item, index) in outArray"
@@ -40,7 +43,6 @@ export default {
   },
   data () {
     return {
-      transitionKey: false,
       digitsArray: [this.digit],
       animated: false
     }
@@ -48,42 +50,39 @@ export default {
   computed: {
     outArray () {
       return this.digitsArray
+    },
+    classObj () {
+      const styleName = 'delay-' + this.delay
+      return {
+        [styleName]: true,
+        animated: this.animated
+      }
     }
   },
-  watch: {
-    gameCounter (val) {
-      if (val > 0) {
-        const digitsArray = []
-        const oldDigit = this.digitsArray[this.digitsArray.length - 1]
-        for (let i = oldDigit; i >= 0; i--) {
-          digitsArray.push(i)
-        }
-        for (let i = 9; i >= 0; i--) {
-          digitsArray.push(i)
-        }
-        for (let i = 9; i >= parseInt(this.digit); i--) {
-          digitsArray.push(i)
-        }
-        /*
-        if (this.digit > 0) {
-          digitsArray.push(this.digit - 1)
-        } else {
-          digitsArray.push(9)
-        }
-        */
-        this.digitsArray = digitsArray
-
-        setTimeout(() => {
-          this.transitionKey = !this.transitionKey
-          setTimeout(() => {
-            this.digitsArray = this.digitsArray.slice(-1)
-            this.animated = true
-            setTimeout(() => {
-              this.animated = false
-            }, 200)
-          }, 1000)
-        }, this.delay)
+  methods: {
+    beforeEnter () {
+      // Создаём массив цифр
+      const digitsArray = []
+      const oldDigit = this.digitsArray[this.digitsArray.length - 1]
+      for (let i = oldDigit; i >= 0; i--) {
+        digitsArray.push(i)
       }
+      for (let i = 9; i >= 0; i--) {
+        digitsArray.push(i)
+      }
+      for (let i = 9; i >= parseInt(this.digit); i--) {
+        digitsArray.push(i)
+      }
+      this.digitsArray = digitsArray
+
+      // Запускаем отолженную анимацию
+      setTimeout(() => {
+        this.animated = true
+        this.digitsArray = this.digitsArray.slice(-1)
+        setTimeout(() => {
+          this.animated = false
+        }, 200)
+      }, 1000)
     }
   }
 }
@@ -113,14 +112,17 @@ export default {
   color: #fff;
   margin: 0 0 0 34px;
   line-height: 103px;
-  transform: translateY(calc(-100% + 107px));
 }
 
 .odometr-enter-active {
   transition: transform 1s cubic-bezier(0.29, 0.01, .02, 0.99);
 }
+.odometr-enter-active.delay-100 { transition-delay: .1s }
+.odometr-enter-active.delay-200 { transition-delay: .2s }
+.odometr-enter-active.delay-300 { transition-delay: .3s }
+
 .odometr-enter { transform: translateY(0); }
-.odometr-enter-to { transform: translateY(calc(-100% + 107px)); }
+.odometr-enter-to { transform: translateY(calc(-100% + 100px)); }
 
 .animated {
   animation: bounce .2s infinite;
@@ -128,13 +130,19 @@ export default {
 
 @keyframes bounce {
   0% {
-      transform: translateY(0);
+      transform: translateY(-7px);
   }
-  50% {
-      transform: translateY(-5%);
+  20% {
+      transform: translateY(-7px);
   }
-  75% {
-      transform: translateY(2.5%);
+  40% {
+      transform: translateY(-6px);
+  }
+  60% {
+      transform: translateY(-3px);
+  }
+  80% {
+      transform: translateY(3px);
   }
   100% {
       transform: translateY(0);
