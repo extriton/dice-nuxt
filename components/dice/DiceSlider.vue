@@ -7,7 +7,7 @@
         v-for="item in captionItems"
         :key="'c' + item"
         class="caption-item"
-        :style="setCaptionItemStyle(item)"
+        :style="{ left: item + '%' }"
       >
         {{ item }}
       </li>
@@ -30,7 +30,7 @@
       <div
         class="runner"
         :class="{ dragged: drag }"
-        :style="setRunnerStyle()"
+        :style="{ left: userValue + '%' }"
         @mousedown.left.self="startDrag"
       >
         {{ runnerValue }}
@@ -41,7 +41,7 @@
         @click.capture="shiftRunner"
       >
         <li
-          v-for="item in 101"
+          v-for="item in (ruleStyles.ruleLineCount + 1)"
           :key="'n' + item"
           class="rule-item"
           :style="setRuleItemStyle(item - 1)"
@@ -78,7 +78,12 @@ export default {
       drag: false,
       ruleWidth: 0,
       startDragX: 0,
-      startDragValue: 0
+      startDragValue: 0,
+      ruleStyles: {
+        ruleOffset: 0,
+        ruleLineCount: 0,
+        pixelsByRuleLine: 0
+      }
     }
   },
   computed: {
@@ -92,22 +97,34 @@ export default {
     }
   },
   mounted () {
-    this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
+    this.calcRuleParams()
+    window.addEventListener('resize', this.calcRuleParams)
   },
   methods: {
-    // Позиционирует числа заголовка captionItems[] в заивсимости от значения
-    setCaptionItemStyle (value) {
-      const style = {
-        left: value + '%'
+    calcRuleParams () {
+      this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
+
+      // PC mode
+      if (this.ruleWidth === 702) {
+        this.ruleStyles.ruleOffset = 21
+        this.ruleStyles.ruleLineCount = 100
+        this.ruleStyles.pixelsByRuleLine = 7
       }
-      return style
+
+      // Mobile mode iPhone 6/7/8 (414px)
+      if (this.ruleWidth === 362) {
+        this.ruleStyles.ruleOffset = 17
+        this.ruleStyles.ruleLineCount = 60
+        this.ruleStyles.pixelsByRuleLine = 6
+      }
     },
     // Позиционирует линию
     setLineStyle () {
       const style = {}
+      const calcGameValue = this.gameValue / 100 * (this.ruleStyles.ruleLineCount / 100 * this.ruleStyles.pixelsByRuleLine)
 
       if (this.gameValue >= 0) {
-        style.left = 21 + this.gameValue / 100 * 7 + 'px'
+        style.left = this.ruleStyles.ruleOffset + calcGameValue + 'px'
       } else {
         style.opacity = 1
       }
@@ -123,13 +140,14 @@ export default {
     // Позиционирует деления линейки
     setRuleItemStyle (value) {
       const style = {}
+      const calcUserValue = this.userValue / 100 * this.ruleStyles.ruleLineCount
 
-      if ((value <= this.userValue && this.reversed) || (value >= this.userValue && !this.reversed)) {
+      if ((value <= calcUserValue && this.reversed) || (value >= calcUserValue && !this.reversed)) {
         style.backgroundColor = 'red'
       }
 
       let dx = 0
-      dx = Math.abs(value - this.userValue)
+      dx = Math.abs(value - calcUserValue)
       if (dx <= 4) {
         const y = Math.sqrt(16 - dx * dx)
         let tmp = 0
@@ -143,13 +161,6 @@ export default {
         style.top = tmp + 'px'
       }
 
-      return style
-    },
-    // Позиционирует триггер
-    setRunnerStyle () {
-      const style = {
-        left: this.userValue + '%'
-      }
       return style
     },
     // Начало перетягивания триггера мышкой
@@ -324,5 +335,22 @@ export default {
 }
 .line-fade-enter { opacity: 0; }
 .line-fade-enter-to { opacity: 1; }
+
+/* 414px  iPhone 6/7/8 */
+@media (width: 414px) {
+  .dice-slider {
+    height: 75px;
+    padding: 12px 16px 0 17px;;
+  }
+
+  .dice-slider .rule-wrapper .rule .rule-item {
+    margin-right: 4px;
+  }
+
+  .dice-slider .rule-line {
+    height: 75px;
+  }
+
+}
 
 </style>

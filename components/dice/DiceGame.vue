@@ -187,7 +187,6 @@ export default {
 
 .dice-slider-wrapper {
   width: 743px;
-  margin: 0 auto;
   position: relative;
   margin: 0 auto 44px auto;
 }
@@ -224,7 +223,7 @@ export default {
   .dice-result-block {
     width: 100%;
     height: auto;
-    margin: 0 auto 45px auto;
+    margin: 0 auto;
   }
 
   .dice-user-value-wrapper {
@@ -256,8 +255,8 @@ export default {
   }
 
   .dice-slider-wrapper {
-    display: none;
-    /* ??? */
+    width: 100%;
+    margin-bottom: 14px;
   }
 
   .dice-slider-wrapper .dice-reverse-wrapper {
