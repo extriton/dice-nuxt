@@ -23,18 +23,18 @@
       <div
         v-show="drag"
         class="runner-pad"
-        @mousemove.self="doDrag"
-        @touchmove.self="doDrag"
-        @mouseup.left="stopDrag"
-        @touchend.self="stopDrag"
-        @mouseleave.self="stopDrag"
+        @mousemove.self.stop="doDrag"
+        @touchmove.self.stop="doDrag"
+        @mouseup.left.stop="stopDrag"
+        @touchend.self.stop="stopDrag"
+        @mouseleave.self.stop="stopDrag"
       />
       <div
         class="runner"
         :class="{ dragged: drag }"
         :style="{ left: userValue + '%' }"
-        @mousedown.left.self="startDrag"
-        @touchstart.self="startDrag"
+        @mousedown.left.self.stop="startDrag"
+        @touchstart.self.stop="startDrag"
       >
         {{ runnerValue }}
       </div>
