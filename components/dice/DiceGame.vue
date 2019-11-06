@@ -88,8 +88,7 @@ export default {
       gameValue: 0,
       reversed: false,
       score: 350.2,
-      // resultType: 0 - default, 1 - win, 2 - lose
-      resultType: 0,
+      resultType: 0, // resultType: 0 - default, 1 - win, 2 - lose
       history: [],
       gameCounter: 0
     }
@@ -214,7 +213,7 @@ export default {
     border: 0;
     border-radius: 0;
     background-color: #291a43;
-    padding: 15px 10px 15px 10px;
+    padding: 15px 10px 15px 9px;
   }
 
   .dice-score-wrapper {

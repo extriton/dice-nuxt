@@ -111,7 +111,7 @@ export default {
   font-weight: bold;
   color: #fff;
   margin: 0 0 0 34px;
-  line-height: 103px;
+  line-height: 107px;
 }
 
 .odometr-enter-active {
@@ -168,14 +168,14 @@ export default {
   .dice-honeycomb-digit {
     position: relative;
     width: 29px;
-    height: 80px;
+    height: 86px;
     font-size: 53px;
     font-weight: bold;
     color: #fff;
-    margin: 0 0 0 34px;
-    line-height: 76px;
+    margin: 0 0 0 32px;
+    line-height: 86px;
   }
 
-  .odometr-enter-to { transform: translateY(calc(-100% + 71px)); }
+  .odometr-enter-to { transform: translateY(calc(-100% + 79px)); }
 }
 </style>
