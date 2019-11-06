@@ -90,7 +90,7 @@ export default {
       score: 350.2,
       // resultType: 0 - default, 1 - win, 2 - lose
       resultType: 0,
-      history: [13.12, -15.4, -6.2, 52.30, 17.12, -5.65],
+      history: [], // [13.12, -15.4, -6.2, 52.30, 17.12, -5.65],
       gameCounter: 0
     }
   },
