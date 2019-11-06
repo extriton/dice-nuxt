@@ -33,8 +33,8 @@
         class="runner"
         :class="{ dragged: drag }"
         :style="{ left: userValue + '%' }"
-        @mousedown.left.self.stop="startDrag"
-        @touchstart.self.stop="startDrag"
+        @mousedown.left.stop="startDrag"
+        @touchstart.stop="startDrag"
       >
         {{ runnerValue }}
       </div>
@@ -279,7 +279,7 @@ export default {
   bottom: -100px;
   left: -56px;
   right: -55px;
-  z-index: 10;
+  z-index: 15;
 }
 
 .dice-slider .rule-wrapper .rule {
@@ -322,6 +322,7 @@ export default {
   transform: translateX(-50%);
   background: url('~assets/arrows.png') no-repeat #FFF;
   background-position: 4px 10px;
+  z-index: 10;
 }
 
 .dice-slider .rule-wrapper .runner:hover {
@@ -347,6 +348,13 @@ export default {
   .dice-slider {
     height: 75px;
     padding: 12px 16px 0 17px;;
+  }
+
+  .dice-slider .rule-wrapper .runner-pad {
+    top: -120px;
+    bottom: -90px;
+    left: -26px;
+    right: -26px;
   }
 
   .dice-slider .rule-wrapper .rule .rule-item {
