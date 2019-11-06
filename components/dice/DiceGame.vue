@@ -143,10 +143,10 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('~/assets/fonts/source_sans_pro.css');
 
 .dice-game {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   width: 813px;
   height: 465px;
   border: 1px solid #000000;

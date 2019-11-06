@@ -111,7 +111,7 @@ export default {
   font-weight: bold;
   color: #fff;
   margin: 0 0 0 34px;
-  line-height: 107px;
+  line-height: 100px;
 }
 
 .odometr-enter-active {
@@ -173,7 +173,7 @@ export default {
     font-weight: bold;
     color: #fff;
     margin: 0 0 0 32px;
-    line-height: 86px;
+    line-height: 80px;
   }
 
   .odometr-enter-to { transform: translateY(calc(-100% + 79px)); }
