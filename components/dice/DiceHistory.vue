@@ -53,12 +53,10 @@ export default {
   position: relative;
 }
 
-/*
 .dice-history-list {
-  position: relative;
-  width: auto;
+  width: 100%;
+  height: 165px;
 }
-*/
 
 .dice-history-item {
   display: block;
