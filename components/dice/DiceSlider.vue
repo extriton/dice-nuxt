@@ -23,15 +23,18 @@
       <div
         v-show="drag"
         class="runner-pad"
-        @mousemove="doDrag"
-        @mouseleave="stopDrag"
+        @mousemove.self="doDrag"
+        @touchmove.self="doDrag"
         @mouseup.left="stopDrag"
+        @touchend.self="stopDrag"
+        @mouseleave.self="stopDrag"
       />
       <div
         class="runner"
         :class="{ dragged: drag }"
         :style="{ left: userValue + '%' }"
         @mousedown.left.self="startDrag"
+        @touchstart.self="startDrag"
       >
         {{ runnerValue }}
       </div>
@@ -165,6 +168,7 @@ export default {
     },
     // Начало перетягивания триггера мышкой
     startDrag (e) {
+      e = e.changedTouches ? e.changedTouches[0] : e
       this.startDragX = e.clientX
       this.startDragValue = this.userValue
       this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
@@ -177,6 +181,7 @@ export default {
     // Перетягивание триггера мышкой
     doDrag (e) {
       if (this.drag) {
+        e = e.changedTouches ? e.changedTouches[0] : e
         let newValue = this.startDragValue + (e.clientX - this.startDragX) / this.ruleWidth * 100
         newValue = parseInt(newValue * 100) / 100
         if (newValue < 0) { newValue = 0 }
@@ -187,6 +192,7 @@ export default {
     // Перемещение триггера при клике по линейке
     shiftRunner (e) {
       let newValue
+      e = e.changedTouches ? e.changedTouches[0] : e
 
       if (e.target._prevClass === 'rule-item') {
         newValue = parseInt((e.offsetX + e.target.offsetLeft) / e.target.parentNode.offsetWidth * 10000) / 100

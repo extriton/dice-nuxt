@@ -4,7 +4,9 @@
     :class="{ clicked: clicked }"
     @click="play"
     @mousedown.left="clicked = true"
+    @touchstart="clicked = true"
     @mouseup.left="clicked = false"
+    @touchend="clicked = false"
     @mouseleave="clicked = false"
   >
     Играть
