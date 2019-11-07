@@ -35,16 +35,12 @@ export default {
 .dice-user-value {
   margin-top: 53px;
   font-size: 28px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 1;
-  letter-spacing: normal;
   color: #5e516d;
 }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-user-value {
     margin-top: 0;
     font-size: 16px;

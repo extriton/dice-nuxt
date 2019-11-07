@@ -127,12 +127,9 @@ export default {
 }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-score {
     width: 394px;
-    height: 30px;
-    margin: 0 auto;
-    position: relative;
   }
 
   .dice-score .dice-score-value {

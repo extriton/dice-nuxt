@@ -54,7 +54,6 @@ export default {
 }
 
 .dice-history-list {
-  width: 100%;
   height: 165px;
 }
 
@@ -62,14 +61,13 @@ export default {
   display: block;
   height: 22px;
   padding: 3px;
-  border-radius: 11.5px;
-  background-color: rgba(255, 255, 255, 0.1);
   margin-bottom: 10px;
   text-align: center;
   color: #91ff4a;
   font-size: 12px;
   line-height: 16px;
-  font-weight: normal;
+  border-radius: 11.5px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dice-history-item.lose {
@@ -104,33 +102,22 @@ export default {
 .list-enter-to { transform: translateY(0); }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-history {
-    width: 100%;
-    max-width: 360px;
+    width: 360px;
     height: 22px;
     padding-top: 0;
   }
 
   .dice-history-list {
     width: 450px;
-    height: 22px;
   }
 
   .dice-history-item {
     display: inline-block;
     width: 60px;
-    height: 22px;
-    padding: 3px;
-    border-radius: 11.5px;
-    background-color: rgba(255, 255, 255, 0.1);
     margin-bottom: 0;
     margin-right: 15px;
-    text-align: center;
-    color: #91ff4a;
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: normal;
   }
 
   .dice-history-item:nth-child(1) { opacity: 1; }

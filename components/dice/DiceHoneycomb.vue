@@ -1,26 +1,24 @@
 <template>
   <div class="dice-honeycomb">
-    <div class="clip-wrap">
-      <transition
-        name="odometr"
-        @before-enter="beforeEnter"
+    <transition
+      name="odometr"
+      @before-enter="beforeEnter"
+    >
+      <ul
+        ref="digits"
+        :key="gameCounter"
+        class="dice-honeycomb-digits"
+        :class="classObj"
       >
-        <ul
-          ref="digits"
-          :key="gameCounter"
-          class="dice-honeycomb-digits"
-          :class="classObj"
+        <li
+          v-for="(item, index) in outArray"
+          :key="'d' + index"
+          class="dice-honeycomb-digit"
         >
-          <li
-            v-for="(item, index) in outArray"
-            :key="'d' + index"
-            class="dice-honeycomb-digit"
-          >
-            {{ item }}
-          </li>
-        </ul>
-      </transition>
-    </div>
+          {{ item }}
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -90,28 +88,18 @@ export default {
 
 <style>
 .dice-honeycomb {
-  width: 117px;
-  height: 134px;
-  overflow: hidden;
-}
-
-.clip-wrap {
-  width: 101px;
-  height: 107px;
-  margin-top: 14px;
-  margin-left: 8px;
+  height: 105px;
+  margin-top: 15px;
   overflow: hidden;
 }
 
 .dice-honeycomb-digit {
   position: relative;
-  width: 35px;
-  height: 107px;
   font-size: 65px;
   font-weight: bold;
   color: #fff;
-  margin: 0 0 0 34px;
   line-height: 100px;
+  text-align: center;
 }
 
 .odometr-enter-active {
@@ -122,7 +110,7 @@ export default {
 .odometr-enter-active.delay-300 { transition-delay: .3s }
 
 .odometr-enter { transform: translateY(0); }
-.odometr-enter-to { transform: translateY(calc(-100% + 100px)); }
+.odometr-enter-to { transform: translateY(calc(-100% + 93px)); }
 
 .animated {
   animation: bounce .2s infinite;
@@ -150,32 +138,17 @@ export default {
 }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-honeycomb {
-    width: 96px;
-    height: 110px;
-    overflow: hidden;
-  }
-
-  .clip-wrap {
-    width: 80px;
-    height: 86px;
+    height: 85px;
     margin-top: 13px;
-    margin-left: 2px;
-    overflow: hidden;
   }
 
   .dice-honeycomb-digit {
-    position: relative;
-    width: 29px;
-    height: 86px;
     font-size: 53px;
-    font-weight: bold;
-    color: #fff;
-    margin: 0 0 0 32px;
     line-height: 80px;
   }
 
-  .odometr-enter-to { transform: translateY(calc(-100% + 79px)); }
+  .odometr-enter-to { transform: translateY(calc(-100% + 73px)); }
 }
 </style>

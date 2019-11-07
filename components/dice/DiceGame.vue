@@ -146,24 +146,24 @@ export default {
 @import url('~/assets/fonts/source_sans_pro.css');
 
 .dice-game {
-  font-family: "Source Sans Pro", sans-serif;
   width: 813px;
-  height: 465px;
+  padding: 18px 35px 35px 35px;
+  background-color: #291a43;
   border: 1px solid #000000;
   border-radius: 7px;
-  background-color: #291a43;
-  padding-top: 18px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
 }
 
 .dice-score-wrapper {
-  width: 743px;
-  margin: 0 auto 29px auto;
+  margin-bottom: 29px;
 }
 
 .dice-result-block {
-  width: 743px;
-  height: 133px;
-  margin: 0 auto 45px auto;
+  margin-bottom: 45px;
 }
 
 .dice-user-value-wrapper {
@@ -186,9 +186,8 @@ export default {
 }
 
 .dice-slider-wrapper {
-  width: 743px;
   position: relative;
-  margin: 0 auto 44px auto;
+  margin-bottom: 44px;
 }
 
 .dice-slider-wrapper .dice-reverse-wrapper {
@@ -205,25 +204,20 @@ export default {
 }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-game {
-    width: 100%;
-    height: auto;
+    width: 414px;
     border: 0;
     border-radius: 0;
-    background-color: #291a43;
     padding: 15px 10px 15px 9px;
   }
 
   .dice-score-wrapper {
-    width: 100%;
-    margin: 0 0 16px 0;
+    margin-bottom: 15px;
   }
 
   .dice-result-block {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
+    margin-bottom: 15px;
   }
 
   .dice-user-value-wrapper {
@@ -242,7 +236,6 @@ export default {
     width: 100%;
     float: none;
     position: relative;
-    margin-bottom: 15px;
   }
 
   .dice-history-wrapper .dice-reverse-wrapper {
@@ -255,13 +248,11 @@ export default {
   }
 
   .dice-slider-wrapper {
-    width: 100%;
     margin-bottom: 14px;
   }
 
   .dice-slider-wrapper .dice-reverse-wrapper {
     display: none;
   }
-
 }
 </style>

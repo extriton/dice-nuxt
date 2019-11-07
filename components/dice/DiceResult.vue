@@ -112,12 +112,13 @@ export default {
 <style>
 .dice-result {
   width: 504px;
-  height: 134px;
   position: relative;
 }
 
 .dice-result img {
+  width: 100%;
   transition: opacity .1s ease-out;
+  display: none;
   opacity: 0;
 }
 
@@ -143,14 +144,6 @@ export default {
   z-index: 10;
 }
 
-.dice-honeycomb-img img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 117px;
-  height: 134px;
-}
-
 .dice-result-dot {
   width: 20px;
   height: 22px;
@@ -161,20 +154,13 @@ export default {
   position: absolute;
 }
 
-.dice-dot-img img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 22px;
-}
-
 .dice-honeycomb-img.default .yellow,
 .dice-honeycomb-img.win .green,
 .dice-honeycomb-img.lose .red,
 .dice-dot-img.default .yellow,
 .dice-dot-img.win .green,
 .dice-dot-img.lose .red {
+  display: block;
   opacity: 1;
 }
 
@@ -183,18 +169,15 @@ export default {
 }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-result {
     width: 100%;
-    height: 110px;
-    position: relative;
   }
 
   .dice-honeycomb-wrap {
     width: 96px;
     height: 110px;
     margin-right: 3px;
-    float: left;
   }
 
   .dice-honeycomb-wrap:nth-child(2) {
@@ -204,14 +187,5 @@ export default {
   .dice-honeycomb-wrap:nth-child(4) {
     margin-right: 0;
   }
-
-  .dice-honeycomb-img img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 96px;
-    height: 110px;
-  }
-
 }
 </style>

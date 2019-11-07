@@ -230,14 +230,26 @@ export default {
   height: 80px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.25);
-  padding: 12px 20px 0 21px;;
-  box-sizing: border-box;
+  padding: 12px 19px 0 20px;
   position: relative;
 }
 
 .dice-slider .caption {
   position: relative;
   height: 16px;
+}
+
+.dice-slider .caption .caption-item {
+  position: absolute;
+  font-size: 12px;
+  line-height: 16px;
+  color: #a698af;
+  opacity: 0.5;
+  transform: translateX(-50%);
+}
+
+.dice-slider .caption .caption-item:last-child {
+  transform: translateX(-100%);
 }
 
 .dice-slider .rule-line {
@@ -249,45 +261,16 @@ export default {
   transition: all .2s ease-out 1.3s;
 }
 
-.dice-slider .caption .caption-item {
-  position: absolute;
-  height: 16px;
-  opacity: 0.5;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: normal;
-  color: #a698af;
-  transform: translateX(-50%);
-}
-
-.dice-slider .caption .caption-item:last-child {
-  transform: translateX(-100%);
-}
-
 .dice-slider .rule-wrapper {
   position: relative;
   margin-top: 12px;
   z-index: 5;
 }
 
-.dice-slider .rule-wrapper .runner-pad {
-  position: absolute;
-  top: -120px;
-  bottom: -100px;
-  left: -56px;
-  right: -55px;
-  z-index: 15;
-}
-
 .dice-slider .rule-wrapper .rule {
   position: relative;
   width: 100%;
   height: 23px;
-  box-sizing: border-box;
-  margin-bottom: 40px;
 }
 
 .dice-slider .rule-wrapper .rule:hover {
@@ -301,7 +284,6 @@ export default {
   top: 0;
   width: 2px;
   height: 8px;
-  vertical-align: top;
   background-color: #50CC00;
 }
 
@@ -336,6 +318,15 @@ export default {
   background-image: none;
 }
 
+.dice-slider .rule-wrapper .runner-pad {
+  position: absolute;
+  top: -120px;
+  bottom: -100px;
+  left: -56px;
+  right: -55px;
+  z-index: 15;
+}
+
 /* Transition styles */
 .line-fade-enter-active, .fade-leave-active {
   transition: opacity .2s ease-out 1.3s;
@@ -344,17 +335,10 @@ export default {
 .line-fade-enter-to { opacity: 1; }
 
 /* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
+@media (min-width: 414px) and (max-width: 812px) {
   .dice-slider {
     height: 75px;
     padding: 12px 16px 0 17px;;
-  }
-
-  .dice-slider .rule-wrapper .runner-pad {
-    top: -120px;
-    bottom: -90px;
-    left: -26px;
-    right: -26px;
   }
 
   .dice-slider .rule-wrapper .rule .rule-item {
@@ -365,6 +349,12 @@ export default {
     height: 75px;
   }
 
-}
+  .dice-slider .rule-wrapper .runner-pad {
+    top: -120px;
+    bottom: -90px;
+    left: -26px;
+    right: -26px;
+  }
 
+}
 </style>
