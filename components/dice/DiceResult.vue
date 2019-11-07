@@ -188,4 +188,29 @@ export default {
     margin-right: 0;
   }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-result {
+    width: 100%;
+  }
+
+  .dice-honeycomb-wrap {
+    width: 74px;
+    height: 83px;
+    margin-right: 2px;
+  }
+
+  .dice-honeycomb-wrap:nth-child(2) {
+    margin-right: 1px;
+  }
+
+  .dice-honeycomb-wrap:nth-child(4) {
+    margin-right: 0;
+  }
+
+  .dice-result-dot {
+    bottom: -5px;
+  }
+}
 </style>

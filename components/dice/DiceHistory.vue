@@ -145,4 +145,49 @@ export default {
   .list-enter { transform: translateX(-75px); }
   .list-enter-to { transform: translateX(0); }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-history {
+    width: 265px;
+    height: 22px;
+    padding-top: 0;
+  }
+
+  .dice-history-list {
+    width: 330px;
+  }
+
+  .dice-history-item {
+    display: inline-block;
+    width: 45px;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .dice-history-item:nth-child(1) { opacity: 1; }
+  .dice-history-item:nth-child(2) { opacity: 0.8; }
+  .dice-history-item:nth-child(3) { opacity: 0.6; }
+  .dice-history-item:nth-child(4) { opacity: 0.4; }
+  .dice-history-item:nth-child(5) { opacity: 0.2;}
+  .dice-history-item:nth-child(6) { opacity: 0.1; }
+
+  .list-enter .dice-history-item:nth-child(1) { opacity: 1; }
+  .list-enter .dice-history-item:nth-child(2) { opacity: 1; }
+  .list-enter .dice-history-item:nth-child(3) { opacity: 0.8; }
+  .list-enter .dice-history-item:nth-child(4) { opacity: 0.6; }
+  .list-enter .dice-history-item:nth-child(5) { opacity: 0.4; }
+  .list-enter .dice-history-item:nth-child(6) { opacity: 0.2; }
+
+  .list-enter-to .dice-history-item:nth-child(1) { opacity: 1; }
+  .list-enter-to .dice-history-item:nth-child(2) { opacity: 0.8; }
+  .list-enter-to .dice-history-item:nth-child(3) { opacity: 0.6; }
+  .list-enter-to .dice-history-item:nth-child(4) { opacity: 0.4; }
+  .list-enter-to .dice-history-item:nth-child(5) { opacity: 0.2; }
+  .list-enter-to .dice-history-item:nth-child(6) { opacity: 0.1; }
+
+  /* Transition styles */
+  .list-enter { transform: translateX(-55px); }
+  .list-enter-to { transform: translateX(0); }
+}
 </style>

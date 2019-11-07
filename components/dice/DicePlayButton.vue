@@ -63,4 +63,11 @@ export default {
     width: 100%;
   }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-play-button {
+    width: 100%;
+  }
+}
 </style>

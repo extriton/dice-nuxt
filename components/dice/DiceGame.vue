@@ -255,4 +255,63 @@ export default {
     display: none;
   }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-game {
+    width: 320px;
+    border: 0;
+    border-radius: 0;
+    padding: 15px 0 20px 0;
+  }
+
+  .dice-score-wrapper {
+    margin-bottom: 16px;
+  }
+
+  .dice-result-block {
+    margin-bottom: 15px;
+  }
+
+  .dice-user-value-wrapper {
+    width: 100%;
+    float: none;
+    margin-bottom: 8px;
+  }
+
+  .dice-result-wrapper {
+    width: 100%;
+    float: none;
+    margin-bottom: 55px;
+    padding: 0 9px 0 10px;
+  }
+
+  .dice-history-wrapper {
+    width: 100%;
+    float: none;
+    position: relative;
+    padding: 0 9px 0 10px;
+  }
+
+  .dice-history-wrapper .dice-reverse-wrapper {
+    display: block;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    right: 5px;
+    top: -5px;
+  }
+
+  .dice-slider-wrapper {
+    margin-bottom: 15px;
+  }
+
+  .dice-slider-wrapper .dice-reverse-wrapper {
+    display: none;
+  }
+
+  .dice-play-button-wrapper {
+    padding: 0 13px 0 9px;
+  }
+}
 </style>

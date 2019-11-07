@@ -120,6 +120,13 @@ export default {
         this.ruleStyles.ruleLineCount = 60
         this.ruleStyles.pixelsByRuleLine = 6
       }
+
+      // Mobile mode iPhone 5/SE (320px)
+      if (this.ruleWidth === 302) {
+        this.ruleStyles.ruleOffset = 9
+        this.ruleStyles.ruleLineCount = 50
+        this.ruleStyles.pixelsByRuleLine = 6
+      }
     },
     // Позиционирует линию
     setLineStyle () {
@@ -338,7 +345,7 @@ export default {
 @media (min-width: 414px) and (max-width: 812px) {
   .dice-slider {
     height: 75px;
-    padding: 12px 16px 0 17px;;
+    padding: 12px 16px 0 17px;
   }
 
   .dice-slider .rule-wrapper .rule .rule-item {
@@ -355,6 +362,28 @@ export default {
     left: -26px;
     right: -26px;
   }
+}
 
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-slider {
+    height: 75px;
+    padding: 12px 9px 0 9px;
+  }
+
+  .dice-slider .rule-wrapper .rule .rule-item {
+    margin-right: 4px;
+  }
+
+  .dice-slider .rule-line {
+    height: 75px;
+  }
+
+  .dice-slider .rule-wrapper .runner-pad {
+    top: -120px;
+    bottom: -90px;
+    left: -9px;
+    right: -9px;
+  }
 }
 </style>

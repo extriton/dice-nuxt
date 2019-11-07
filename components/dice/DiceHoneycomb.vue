@@ -151,4 +151,19 @@ export default {
 
   .odometr-enter-to { transform: translateY(calc(-100% + 73px)); }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-honeycomb {
+    height: 65px;
+    margin-top: 10px;
+  }
+
+  .dice-honeycomb-digit {
+    font-size: 41px;
+    line-height: 63px;
+  }
+
+  .odometr-enter-to { transform: translateY(calc(-100% + 56px)); }
+}
 </style>

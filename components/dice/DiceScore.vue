@@ -136,4 +136,15 @@ export default {
     width: 368px;
   }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-score {
+    width: 299px;
+  }
+
+  .dice-score .dice-score-value {
+    width: 273px;
+  }
+}
 </style>

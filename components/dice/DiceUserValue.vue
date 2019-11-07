@@ -48,4 +48,14 @@ export default {
     text-align: center;
   }
 }
+
+/* 320px  iPhone 5/SE */
+@media (min-width: 320px) and (max-width: 413px) {
+  .dice-user-value {
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: center;
+  }
+}
 </style>
