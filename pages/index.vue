@@ -20,26 +20,29 @@ export default {
 </script>
 <style>
 .page {
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 0;
   background-color: #381960;
-  padding: 100px 50px;
+}
+
+.page:before {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  content: '';
 }
 
 .dice-game-wrapper {
-  margin: 0 auto;
-  margin-left: calc((100% - 813px) / 2 );
-}
-
-/* 414px  iPhone 6/7/8 */
-@media (width: 414px) {
-  .page {
-    height: auto;
-    background-color: transparent;
-    padding: 0;
-  }
-
-  .dice-game-wrapper {
-    margin: 0;
-  }
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
 }
 </style>
