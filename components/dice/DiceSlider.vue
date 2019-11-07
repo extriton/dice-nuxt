@@ -24,9 +24,7 @@
         v-show="drag"
         class="runner-pad"
         @mousemove="doDrag"
-        @touchmove="doDrag"
         @mouseup="stopDrag"
-        @touchend="stopDrag"
         @mouseleave="stopDrag"
       />
       <div
@@ -35,6 +33,8 @@
         :style="{ left: userValue + '%' }"
         @touchstart="startDrag"
         @mousedown="startDrag"
+        @touchmove="doDrag"
+        @touchend="stopDrag"
       >
         {{ runnerValue }}
       </div>
@@ -175,11 +175,12 @@ export default {
     },
     // Начало перетягивания триггера мышкой
     startDrag (e) {
+      this.drag = true
+      e.preventDefault()
       e = e.changedTouches ? e.changedTouches[0] : e
       this.startDragX = e.clientX
       this.startDragValue = this.userValue
       this.ruleWidth = this.$refs.rule.getBoundingClientRect().width
-      this.drag = true
     },
     // Завршение перетягивания триггера мышкой
     stopDrag (e) {
@@ -191,8 +192,8 @@ export default {
         e = e.changedTouches ? e.changedTouches[0] : e
         let newValue = this.startDragValue + (e.clientX - this.startDragX) / this.ruleWidth * 100
         newValue = parseInt(newValue * 100) / 100
-        if (newValue < 0) { newValue = 0 }
-        if (newValue > 99.99) { newValue = 99.99 }
+        if (newValue < 2) { newValue = 2 }
+        if (newValue > 98) { newValue = 98 }
         this.changeUserValue(newValue)
       }
     },
@@ -207,8 +208,8 @@ export default {
         newValue = parseInt(e.offsetX / e.target.offsetWidth * 10000) / 100
       }
 
-      if (newValue < 0) { newValue = 0 }
-      if (newValue > 99.99) { newValue = 99.99 }
+      if (newValue < 2) { newValue = 2 }
+      if (newValue > 98) { newValue = 98 }
 
       const deltaValue = (newValue - this.userValue) / 20
       const intervalId = setInterval(() => {
@@ -253,6 +254,10 @@ export default {
   color: #a698af;
   opacity: 0.5;
   transform: translateX(-50%);
+}
+
+.dice-slider .caption .caption-item:first-child {
+  transform: translateX(0);
 }
 
 .dice-slider .caption .caption-item:last-child {

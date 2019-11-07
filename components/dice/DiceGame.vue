@@ -311,7 +311,7 @@ export default {
   }
 
   .dice-play-button-wrapper {
-    padding: 0 13px 0 9px;
+    padding: 0 9px;
   }
 }
 </style>
