@@ -149,7 +149,28 @@ export default {
     line-height: 80px;
   }
 
-  .odometr-enter-to { transform: translateY(calc(-100% + 73px)); }
+  .odometr-enter-to { transform: translateY(calc(-100% + 74px)); }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(-6px);
+    }
+    20% {
+      transform: translateY(-6px);
+    }
+    40% {
+      transform: translateY(-5px);
+    }
+    60% {
+      transform: translateY(-2px);
+    }
+    80% {
+      transform: translateY(2px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 }
 
 /* 320px  iPhone 5/SE */
@@ -164,6 +185,27 @@ export default {
     line-height: 63px;
   }
 
-  .odometr-enter-to { transform: translateY(calc(-100% + 56px)); }
+  .odometr-enter-to { transform: translateY(calc(-100% + 58px)); }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(-5px);
+    }
+    20% {
+      transform: translateY(-5px);
+    }
+    40% {
+      transform: translateY(-4px);
+    }
+    60% {
+      transform: translateY(-2px);
+    }
+    80% {
+      transform: translateY(2px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 }
 </style>
