@@ -314,7 +314,7 @@ export default {
   color: #291944;
   text-align: center;
   transform: translateX(-50%);
-  background: url('~assets/arrows.png') no-repeat #FFF;
+  background: url('~assets/arrows.svg') no-repeat #FFF;
   background-position: 4px 10px;
   z-index: 10;
 }
