@@ -187,6 +187,11 @@ export default {
   .dice-honeycomb-wrap:nth-child(4) {
     margin-right: 0;
   }
+
+  .dice-result-dot {
+    width: 16px;
+    height: 18px;
+  }
 }
 
 /* 320px  iPhone 5/SE */
@@ -210,6 +215,8 @@ export default {
   }
 
   .dice-result-dot {
+    width: 12px;
+    height: 14px;
     bottom: -5px;
   }
 }
