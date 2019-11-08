@@ -113,7 +113,7 @@ export default {
 .odometr-enter-to { transform: translateY(calc(-100% + 93px)); }
 
 .animated {
-  animation: bounce .2s infinite;
+  animation: bounce .2s 1;
 }
 
 @keyframes bounce {
