@@ -28,15 +28,19 @@
         @mouseleave="stopDrag"
       />
       <div
-        class="runner"
-        :class="{ dragged: drag }"
+        class="runner-touch-wrap"
         :style="{ left: userValue + '%' }"
         @touchstart="startDrag"
-        @mousedown="startDrag"
         @touchmove="doDrag"
         @touchend="stopDrag"
       >
-        {{ runnerValue }}
+        <div
+          class="runner"
+          :class="{ dragged: drag }"
+          @mousedown="startDrag"
+        >
+          {{ runnerValue }}
+        </div>
       </div>
       <ul
         ref="rule"
@@ -303,9 +307,17 @@ export default {
   margin-right: 0;
 }
 
+.runner-touch-wrap {
+  width: 28px;
+  height: 48px;
+  position: absolute;
+  top: -40px;
+  transform: translateX(-50%);
+}
+
 .dice-slider .rule-wrapper .runner {
   position: absolute;
-  top: -20px;
+  bottom: 0;
   width: 28px;
   height: 28px;
   line-height: 28px;
@@ -313,7 +325,6 @@ export default {
   border-radius: 100%;
   color: #291944;
   text-align: center;
-  transform: translateX(-50%);
   background: url('~assets/arrows.svg') no-repeat #FFF;
   background-position: 4px 10px;
   z-index: 10;
