@@ -33,17 +33,17 @@ export default {
   height: 34px;
   border: 5px solid #291a43;
   border-radius: 100%;
-  background: url('~assets/change.png') no-repeat #3e3156;
+  background: url('~assets/change.svg') no-repeat #3e3156;
   background-position: 3px 3px;
 }
 .dice-reverse:hover {
   cursor: pointer;
-  background: url('~assets/change_h.png') no-repeat #fff;
+  background: url('~assets/change_h.svg') no-repeat #fff;
   background-position: 3px 3px;
 }
 .dice-reverse.clicked {
   cursor: pointer;
-  background: url('~assets/change_h.png') no-repeat #ffed2a;
+  background: url('~assets/change_h.svg') no-repeat #ffed2a;
   background-position: 3px 3px;
 }
 </style>
